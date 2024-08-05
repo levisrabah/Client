@@ -3,6 +3,9 @@ import { Link, useHistory } from 'react-router-dom';
 import { useAuth } from './AuthContext'; // Adjust the import path as necessary
 import { useFormik } from 'formik'; // Import Formik
 
+// Import the necessary components
+import { Container, SignInContainer, Form, Title, Input, Anchor, Button, OverlayContainer, Overlay, LeftOverlayPanel, Paragraph, GhostButton } from './StyledComponents'; // Adjust the import path as necessary
+
 const LoginPage = () => {
   const { login } = useAuth(); // Access login function from AuthContext
   const history = useHistory();
@@ -10,7 +13,7 @@ const LoginPage = () => {
   // Formik Setup
   const formik = useFormik({
     initialValues: {
-      username:'',
+      username: '',
       email: '',
       password: '',
     },
@@ -24,12 +27,12 @@ const LoginPage = () => {
             history.push('/welcome');
           }
         } else {
-          formik.setFieldError('username',message || 'Login failed');
+          formik.setFieldError('username', message || 'Login failed');
           formik.setFieldError('email', message || 'Login failed');
           formik.setFieldError('password', message || 'Login failed');
         }
       } catch (err) {
-        formik.setFieldError('username'.err.response?.data?.message|| 'An error occurred during login');
+        formik.setFieldError('username', err.response?.data?.message || 'An error occurred during login');
         formik.setFieldError('email', err.response?.data?.message || 'An error occurred during login');
         formik.setFieldError('password', err.response?.data?.message || 'An error occurred during login');
       }
@@ -41,16 +44,17 @@ const LoginPage = () => {
       <SignInContainer>
         <Form onSubmit={formik.handleSubmit}>
           <Title>Log in</Title>
-          {formik.errors.email && formik.touched.email && <p style={{ color: 'red' }}>{formik.errors.email}</p>}
+          {formik.errors.username && formik.touched.username && <p style={{ color: 'red' }}>{formik.errors.username}</p>}
           <Input
-          type='username'
-          placeholder='username'
-          name='username'
-          value={formik.values.username}
-          onChange={formik.handleChange}
-          onBlur={formik.handleBlur}
-          required
+            type='text'
+            placeholder='Username'
+            name='username'
+            value={formik.values.username}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            required
           />
+          {formik.errors.email && formik.touched.email && <p style={{ color: 'red' }}>{formik.errors.email}</p>}
           <Input
             type='email'
             placeholder='Email'
@@ -86,8 +90,6 @@ const LoginPage = () => {
               Sign Up
             </GhostButton>
           </LeftOverlayPanel>
-
-          {/* RightOverlayPanel for another panel if needed */}
         </Overlay>
       </OverlayContainer>
     </Container>
