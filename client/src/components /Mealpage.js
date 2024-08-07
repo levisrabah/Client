@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import '../styles/mealpage.css';
-
+import Navbar from './navbar';
 function MealPage() {
   const { id } = useParams();
   const [meal, setMeal] = useState(null);
@@ -24,6 +24,7 @@ function MealPage() {
 
   return (
     <div className="meal-page">
+      
       <img src={meal.image} alt={meal.name} />
       <div className="meal-details">
         <h1 id='name'>{meal.name}</h1>

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import MealCard from './Mealcard';
-
+import Navbar from './navbar';
 function Menu() {
   const { id } = useParams();
   const [meals, setMeals] = useState([]);
@@ -15,6 +15,7 @@ function Menu() {
 
   return (
     <div>
+      <Navbar />
       <h1>Menu</h1>
       {meals.map(meal => (
         <MealCard key={meal.id} {...meal} />
