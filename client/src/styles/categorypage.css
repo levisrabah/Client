@@ -1,0 +1,42 @@
+.category-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+  }
+  
+  .category-cards {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  
+  .category-card {
+    display: inline-block;
+    width: 30%;
+    margin: 1%;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    text-align: center;
+    background-color: #fff;
+    transition: transform 0.3s;
+    text-decoration: none;
+    color: inherit;
+  }
+  
+  .category-card:hover {
+    transform: scale(1.05);
+  }
+  
+  .category-card img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  
+  .category-card h2 {
+    padding: 15px;
+  }
+  

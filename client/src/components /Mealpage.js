@@ -3,37 +3,50 @@ import { useParams } from 'react-router-dom';
 import '../styles/mealpage.css';
 
 function MealPage() {
-  const { id } = useParams();
-  const [meal, setMeal] = useState(null);
+  const { categoryId } = useParams(); // Change `id` to `categoryId`
+  const [meals, setMeals] = useState([]);
+  const [categoryName, setCategoryName] = useState('');
 
   useEffect(() => {
-    fetch(`http://localhost:5555/meals/${id}`)
+    fetch(`http://localhost:5000/categories/${categoryId}/meals`) // Update URL to fetch meals by category
       .then(response => response.json())
-      .then(data => setMeal(data))
-      .catch(error => console.error(error));
-  }, [id]);
+      .then(data => {
+        setMeals(data);
+        if (data.length > 0) {
+          // Fetch category name if not included in the meal data
+          fetch(`http://localhost:5000/categories/${categoryId}`)
+            .then(response => response.json())
+            .then(category => setCategoryName(category.category_name))
+            .catch(error => console.error('Error fetching category:', error));
+        }
+      })
+      .catch(error => console.error('Error fetching meals:', error));
+  }, [categoryId]);
 
-  if (!meal) {
-    return <div>Loading...</div>;
-  }
-
-  const handleAddToCart = () => {
-    // Add to cart logic here
-    console.log('Meal added to cart:', meal);
+  const handleAddToCart = (meal) => {
+    // Implement your add to cart functionality here
+    console.log('Add to Cart:', meal);
   };
 
   return (
     <div className="meal-page">
-      <img src={meal.image} alt={meal.name} />
-      <div className="meal-details">
-        <h1 id='name'>{meal.name}</h1>
-        <h2 id='category'>This is one of our {meal.category}</h2>
-        <p id='topic'>Description</p>
-        <p id='description'>-{meal.description}</p>
-        <p id='price'>Price: ${meal.price}</p>
-        <button className="add-to-cart-button" onClick={handleAddToCart}>
-          Add to Cart
-        </button>
+      {categoryName && <h1>{categoryName}</h1>}
+      <div className="meal-cards">
+        {meals.length > 0 ? (
+          meals.map(meal => (
+            <div key={meal.id} className="meal-card">
+              <img src={meal.image} alt={meal.name} />
+              <div className="meal-details">
+                <h2>{meal.name}</h2>
+                <p>{meal.description}</p>
+                <p>Price: ${meal.price}</p>
+                <button onClick={() => handleAddToCart(meal)}>Add to Cart</button>
+              </div>
+            </div>
+          ))
+        ) : (
+          <p>No meals available for this category.</p>
+        )}
       </div>
     </div>
   );
