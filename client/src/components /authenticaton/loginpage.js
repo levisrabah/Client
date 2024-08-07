@@ -1,98 +1,60 @@
-import React from 'react';
-import { Link, useHistory } from 'react-router-dom';
-import { useAuth } from './AuthContext'; // Adjust the import path as necessary
-import { useFormik } from 'formik'; // Import Formik
-
-// Import the necessary components
-import { Container, SignInContainer, Form, Title, Input, Anchor, Button, OverlayContainer, Overlay, LeftOverlayPanel, Paragraph, GhostButton } from './StyledComponents'; // Adjust the import path as necessary
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 const LoginPage = () => {
-  const { login } = useAuth(); // Access login function from AuthContext
-  const history = useHistory();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+  const navigate = useNavigate();
 
-  // Formik Setup
-  const formik = useFormik({
-    initialValues: {
-      username: '',
-      email: '',
-      password: '',
-    },
-    onSubmit: async (values) => {
-      try {
-        const { success, message, role } = await login(values); // Call login function from AuthContext
-        if (success) {
-          if (role === 'user') {
-            history.push('/welcome');
-          } else if (role === 'admin') {
-            history.push('/welcome');
-          }
-        } else {
-          formik.setFieldError('username', message || 'Login failed');
-          formik.setFieldError('email', message || 'Login failed');
-          formik.setFieldError('password', message || 'Login failed');
-        }
-      } catch (err) {
-        formik.setFieldError('username', err.response?.data?.message || 'An error occurred during login');
-        formik.setFieldError('email', err.response?.data?.message || 'An error occurred during login');
-        formik.setFieldError('password', err.response?.data?.message || 'An error occurred during login');
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await axios.post('http://127.0.0.1:5555/login', {
+        email,
+        password,
+      });
+
+      localStorage.setItem('token', response.data.access_token);
+      localStorage.setItem('role', response.data.role);
+
+      if (response.data.role === 'admin') {
+        navigate('/admin-dashboard'); // Navigate to admin dashboard
+      } else {
+        navigate('/user-dashboard'); // Navigate to user dashboard
       }
-    },
-  });
+    } catch (err) {
+      setError('Invalid email or password');
+    }
+  };
 
   return (
-    <Container>
-      <SignInContainer>
-        <Form onSubmit={formik.handleSubmit}>
-          <Title>Log in</Title>
-          {formik.errors.username && formik.touched.username && <p style={{ color: 'red' }}>{formik.errors.username}</p>}
-          <Input
-            type='text'
-            placeholder='Username'
-            name='username'
-            value={formik.values.username}
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
+    <div>
+      <h2>Login</h2>
+      {error && <p style={{ color: 'red' }}>{error}</p>}
+      <form onSubmit={handleLogin}>
+        <div>
+          <label>Email:</label>
+          <input
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
             required
           />
-          {formik.errors.email && formik.touched.email && <p style={{ color: 'red' }}>{formik.errors.email}</p>}
-          <Input
-            type='email'
-            placeholder='Email'
-            name='email'
-            value={formik.values.email}
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
+        </div>
+        <div>
+          <label>Password:</label>
+          <input
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
             required
           />
-          {formik.errors.password && formik.touched.password && <p style={{ color: 'red' }}>{formik.errors.password}</p>}
-          <Input
-            type='password'
-            placeholder='Password'
-            name='password'
-            value={formik.values.password}
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            required
-          />
-          <Anchor href='#'>Forgot your password?</Anchor>
-          <Button type="submit">Log In</Button>
-        </Form>
-      </SignInContainer>
-
-      <OverlayContainer>
-        <Overlay>
-          <LeftOverlayPanel>
-            <Title>Welcome Back!</Title>
-            <Paragraph>
-              Create an account
-            </Paragraph>
-            <GhostButton as={Link} to="/register">
-              Sign Up
-            </GhostButton>
-          </LeftOverlayPanel>
-        </Overlay>
-      </OverlayContainer>
-    </Container>
+        </div>
+        <button type="submit">Login</button>
+      </form>
+    </div>
   );
 };
 
