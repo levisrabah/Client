@@ -1,98 +1,81 @@
-import React from 'react';
-import { Link, useHistory } from 'react-router-dom';
-import { useAuth } from './AuthContext'; // Adjust the import path as necessary
-import { useFormik } from 'formik'; // Import Formik
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import './LoginPage.css';
 
-// Import the necessary components
-import { Container, SignInContainer, Form, Title, Input, Anchor, Button, OverlayContainer, Overlay, LeftOverlayPanel, Paragraph, GhostButton } from './StyledComponents'; // Adjust the import path as necessary
 
 const LoginPage = () => {
-  const { login } = useAuth(); // Access login function from AuthContext
-  const history = useHistory();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+  const navigate = useNavigate();
 
-  // Formik Setup
-  const formik = useFormik({
-    initialValues: {
-      username: '',
-      email: '',
-      password: '',
-    },
-    onSubmit: async (values) => {
-      try {
-        const { success, message, role } = await login(values); // Call login function from AuthContext
-        if (success) {
-          if (role === 'user') {
-            history.push('/welcome');
-          } else if (role === 'admin') {
-            history.push('/welcome');
-          }
-        } else {
-          formik.setFieldError('username', message || 'Login failed');
-          formik.setFieldError('email', message || 'Login failed');
-          formik.setFieldError('password', message || 'Login failed');
-        }
-      } catch (err) {
-        formik.setFieldError('username', err.response?.data?.message || 'An error occurred during login');
-        formik.setFieldError('email', err.response?.data?.message || 'An error occurred during login');
-        formik.setFieldError('password', err.response?.data?.message || 'An error occurred during login');
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await axios.post('http://127.0.0.1:5555/login', {
+        email,
+        password,
+      });
+
+      localStorage.setItem('token', response.data.access_token);
+      localStorage.setItem('role', response.data.role);
+
+      if (response.data.role === 'admin') {
+        navigate('/admin-dashboard'); // Navigate to admin dashboard
+      } else {
+        navigate('/user-dashboard'); // Navigate to user dashboard
       }
-    },
-  });
+    } catch (err) {
+      setError('Invalid email or password');
+    }
+  };
 
   return (
-    <Container>
-      <SignInContainer>
-        <Form onSubmit={formik.handleSubmit}>
-          <Title>Log in</Title>
-          {formik.errors.username && formik.touched.username && <p style={{ color: 'red' }}>{formik.errors.username}</p>}
-          <Input
-            type='text'
-            placeholder='Username'
-            name='username'
-            value={formik.values.username}
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            required
-          />
-          {formik.errors.email && formik.touched.email && <p style={{ color: 'red' }}>{formik.errors.email}</p>}
-          <Input
-            type='email'
-            placeholder='Email'
-            name='email'
-            value={formik.values.email}
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            required
-          />
-          {formik.errors.password && formik.touched.password && <p style={{ color: 'red' }}>{formik.errors.password}</p>}
-          <Input
-            type='password'
-            placeholder='Password'
-            name='password'
-            value={formik.values.password}
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            required
-          />
-          <Anchor href='#'>Forgot your password?</Anchor>
-          <Button type="submit">Log In</Button>
-        </Form>
-      </SignInContainer>
-
-      <OverlayContainer>
-        <Overlay>
-          <LeftOverlayPanel>
-            <Title>Welcome Back!</Title>
-            <Paragraph>
-              Create an account
-            </Paragraph>
-            <GhostButton as={Link} to="/register">
-              Sign Up
-            </GhostButton>
-          </LeftOverlayPanel>
-        </Overlay>
-      </OverlayContainer>
-    </Container>
+    <div className="login-container">
+      <div className="login-image">
+      <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxleHBsb3JlLWZlZWR8MXx8fGVufDB8fHx8fA%3D%3D" alt="Pizza" />
+        <div className="image-text">Best Blaze meal Try IT</div>
+      </div>
+      <div className="login-form">
+        <h2>Login</h2>
+        {error && <p style={{ color: 'red' }}>{error}</p>}
+        <form onSubmit={handleLogin}>
+          <div className="input-group">
+            <label>Username:</label>
+            <input
+              type="text"
+              placeholder="username"
+              required
+            />
+          </div>
+          <div className="input-group">
+            <label>Email:</label>
+            <input
+              type="email"
+              value={email}
+              placeholder="email"
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+          </div>
+          <div className="input-group">
+            <label>Password:</label>
+            <input
+              type="password"
+              value={password}
+              placeholder="password"
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+          </div>
+          <button type="submit" className="login-button">Login</button>
+        </form>
+        <button className="register-button" onClick={() => navigate('/register')}>
+          Register here
+        </button>
+      </div>
+    </div>
   );
 };
 

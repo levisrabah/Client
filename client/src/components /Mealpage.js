@@ -1,19 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import '../styles/mealpage.css';
+import Navbar from './navbar';
 
 function MealPage() {
-  const { categoryId } = useParams(); // Change `id` to `categoryId`
+  const { categoryId } = useParams();
   const [meals, setMeals] = useState([]);
   const [categoryName, setCategoryName] = useState('');
 
   useEffect(() => {
-    fetch(`http://localhost:5000/categories/${categoryId}/meals`) // Update URL to fetch meals by category
+    fetch(`http://localhost:5000/categories/${categoryId}/meals`)
       .then(response => response.json())
       .then(data => {
         setMeals(data);
         if (data.length > 0) {
-          // Fetch category name if not included in the meal data
           fetch(`http://localhost:5000/categories/${categoryId}`)
             .then(response => response.json())
             .then(category => setCategoryName(category.category_name))
@@ -24,12 +24,12 @@ function MealPage() {
   }, [categoryId]);
 
   const handleAddToCart = (meal) => {
-    // Implement your add to cart functionality here
     console.log('Add to Cart:', meal);
   };
 
   return (
     <div className="meal-page">
+      <Navbar />
       {categoryName && <h1>{categoryName}</h1>}
       <div className="meal-cards">
         {meals.length > 0 ? (
