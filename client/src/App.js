@@ -7,6 +7,7 @@ import LoginPage from './components /authenticaton/loginpage';
 import RegisterPage from './components /authenticaton/registerPage';
 import Menu from './components /Menu';
 import CategoryPage from './components /categoryPage';
+import DailyOffer from './components /DailyOffer';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="*" element={<Navigate to="/welcome" />} />
+        <Route path="/offers" element={<DailyOffer />} />
       </Routes>
     </Router>
   );
