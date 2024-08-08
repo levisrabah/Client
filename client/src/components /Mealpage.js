@@ -1,15 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import '../styles/mealpage.css';
-import Navbar from './navbar';
 
-function MealPage() {
-  const { categoryId } = useParams();
-  const [meals, setMeals] = useState([]);
-  const [categoryName, setCategoryName] = useState('');
+
+function MealPage({ addToBasket }) {
+  const { id } = useParams();
+  const [meal, setMeal] = useState(null);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/categories/${categoryId}/meals`)
+    fetch(`http://localhost:5000/meals/${id}`)
+
+
+
       .then(response => response.json())
       .then(data => {
         setMeals(data);
@@ -23,30 +25,28 @@ function MealPage() {
       .catch(error => console.error('Error fetching meals:', error));
   }, [categoryId]);
 
-  const handleAddToCart = (meal) => {
-    console.log('Add to Cart:', meal);
+
+  if (!meal) {
+    return <div>Loading...</div>;
+  }
+
+  const handleAddToCart = () => {
+    addToBasket(meal);
+    console.log('Meal added to cart:', meal);
   };
 
   return (
     <div className="meal-page">
-      <Navbar />
-      {categoryName && <h1>{categoryName}</h1>}
-      <div className="meal-cards">
-        {meals.length > 0 ? (
-          meals.map(meal => (
-            <div key={meal.id} className="meal-card">
-              <img src={meal.image} alt={meal.name} />
-              <div className="meal-details">
-                <h2>{meal.name}</h2>
-                <p>{meal.description}</p>
-                <p>Price: ${meal.price}</p>
-                <button onClick={() => handleAddToCart(meal)}>Add to Cart</button>
-              </div>
-            </div>
-          ))
-        ) : (
-          <p>No meals available for this category.</p>
-        )}
+      <img src={meal.image} alt={meal.name} />
+      <div className="meal-details">
+        <h1 id='name'>{meal.name}</h1>
+        <h2 id='category'>This is one of our {meal.category}</h2>
+        <p id='topic'>Description</p>
+        <p id='description'>-{meal.description}</p>
+        <p id='price'>Price: ${meal.price}</p>
+        <button className="add-to-cart-button" onClick={handleAddToCart}>
+          Add to Cart
+
       </div>
     </div>
   );
