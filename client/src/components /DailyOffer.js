@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import Navbar from './navbar';
 import '../styles/DailyOffer.css';
 
 const DailyOffer = () => {
@@ -90,6 +91,7 @@ const DailyOffer = () => {
 
   return (
     <div className="daily-offer-container">
+      <Navbar /> {/* Render Navbar component */}
       <h1 className="main-title">Check out today's offers:</h1>
       {Object.keys(offers).map(date => (
         <div key={date} className="date-section">
