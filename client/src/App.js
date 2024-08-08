@@ -6,6 +6,7 @@ import MealPage from './components /Mealpage';
 import LoginPage from './components /authenticaton/loginpage';
 import RegisterPage from './components /authenticaton/registerPage';
 import Menu from './components /Menu';
+import CategoryPage from './components /categoryPage';
 import DailyOffer from './components /DailyOffer';
 
 function App() {
@@ -13,6 +14,7 @@ function App() {
     <Router>
       <Routes>
         <Route path="/welcome" element={<WelcomePage />} />
+        <Route path="/categories" element={<CategoryPage />} />
         <Route path="categories/:id/meals" element={<Menu />} />
         <Route path="meals/:id" element={<MealPage />} />
         <Route path="/login" element={<LoginPage />} />
