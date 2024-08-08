@@ -45,6 +45,7 @@ function App() {
         <Route path="/register" element={<RegisterPage />} />
         <Route path="*" element={<Navigate to="/welcome" />} />
         <Route path="/offers" element={<DailyOffer />} />
+        <Route path="/categories" element={<CategoryPage />} />
       </Routes>
     </Router>
   );
