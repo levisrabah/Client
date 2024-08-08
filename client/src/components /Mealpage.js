@@ -1,14 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import '../styles/mealpage.css';
-import Navbar from './navbar';
 
-function MealPage() {
+function MealPage({ addToBasket }) {
   const { id } = useParams();
   const [meal, setMeal] = useState(null);
 
   useEffect(() => {
-    fetch(`http://localhost:5555/meals/${id}`)
+    fetch(`http://localhost:5000/meals/${id}`)
       .then(response => response.json())
       .then(data => setMeal(data))
       .catch(error => console.error(error));
@@ -19,13 +18,12 @@ function MealPage() {
   }
 
   const handleAddToCart = () => {
-    // Add to cart logic here
+    addToBasket(meal);
     console.log('Meal added to cart:', meal);
   };
 
   return (
     <div className="meal-page">
-      <Navbar /> {/* Include Navbar here */}
       <img src={meal.image} alt={meal.name} />
       <div className="meal-details">
         <h1 id='name'>{meal.name}</h1>
