@@ -2,16 +2,29 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import '../styles/mealpage.css';
 
+
 function MealPage({ addToBasket }) {
   const { id } = useParams();
   const [meal, setMeal] = useState(null);
 
   useEffect(() => {
     fetch(`http://localhost:5000/meals/${id}`)
+
+
+
       .then(response => response.json())
-      .then(data => setMeal(data))
-      .catch(error => console.error(error));
-  }, [id]);
+      .then(data => {
+        setMeals(data);
+        if (data.length > 0) {
+          fetch(`http://localhost:5000/categories/${categoryId}`)
+            .then(response => response.json())
+            .then(category => setCategoryName(category.category_name))
+            .catch(error => console.error('Error fetching category:', error));
+        }
+      })
+      .catch(error => console.error('Error fetching meals:', error));
+  }, [categoryId]);
+
 
   if (!meal) {
     return <div>Loading...</div>;
@@ -33,7 +46,7 @@ function MealPage({ addToBasket }) {
         <p id='price'>Price: ${meal.price}</p>
         <button className="add-to-cart-button" onClick={handleAddToCart}>
           Add to Cart
-        </button>
+
       </div>
     </div>
   );

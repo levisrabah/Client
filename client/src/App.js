@@ -7,6 +7,8 @@ import LoginPage from './components /authenticaton/loginpage';
 import RegisterPage from './components /authenticaton/registerPage';
 import Menu from './components /Menu';
 import BasketPage from './components /basketPage';
+import CategoryPage from './components /categoryPage';
+import DailyOffer from './components /DailyOffer';
 
 function App() {
   const [basketItems, setBasketItems] = useState([]);
@@ -38,10 +40,11 @@ function App() {
         <Route path="/welcome" element={<WelcomePage />} />
         <Route path="categories/:id/meals" element={<Menu addToBasket={addToBasket} />} />
         <Route path="meals/:id" element={<MealPage addToBasket={addToBasket} />} />
-        <Route path="/basket" element={<BasketPage basketItems={basketItems} handleQuantityChange={handleQuantityChange} />} />
+        <Route path="/basket" element={<BasketPage basketItems={basketItems} handleQuantityChange={handleQuantityChange} />} 
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="*" element={<Navigate to="/welcome" />} />
+        <Route path="/offers" element={<DailyOffer />} />
       </Routes>
     </Router>
   );
