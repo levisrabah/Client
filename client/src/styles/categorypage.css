@@ -20,7 +20,7 @@
 .category-card {
   width: 470px;
   max-width: 600px;
-  height: 580px;
+  max-height: 580px;
   border-radius: 20px;
   overflow: hidden;
   text-align: center;
@@ -39,24 +39,28 @@
 
 .category-card:nth-child(2) {
   left: 620px;
+  height: 560px;
   z-index: 4;
   filter: blur(0px);
 }
 
 .category-card:nth-child(3) {
   left: 510px;
+  height: 540px;
   z-index: 3;
   filter: blur(1px);
 }
 
 .category-card:nth-child(4) {
   left: 400px;
+  height: 520px;
   z-index: 2;
   filter: blur(2.5px);
 }
 
 .category-card:nth-child(5) {
   left: 330px;
+  height: 500px;
   z-index: 1;
   filter: blur(3px);
 }
