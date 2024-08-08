@@ -142,4 +142,22 @@ body {
   footer a:hover {
     text-decoration: underline;
   }
+  @keyframes fadeInSlideDown {
+    0% {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .empty-basket {
+    animation: fadeInSlideDown 0.5s ease-in-out;
+    text-align: center;
+    font-size: 1.5em;
+    color: #f57c00;
+    margin-top: 20px;
+  }
   
