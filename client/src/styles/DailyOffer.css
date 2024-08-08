@@ -1,76 +1,76 @@
 .daily-offer-container {
-    padding: 20px;
-  }
-  
-  .main-title {
-    text-align: center;
-    margin-bottom: 20px;
-  }
-  
-  .date-section {
-    margin-bottom: 40px;
-  }
-  
-  .date-title {
-    font-size: 1.5em;
-    margin-bottom: 10px;
-  }
-  
-  .offers-grid {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-  }
-  
-  .offer-card {
-    border: 1px solid #ddd;
-    padding: 20px;
-    border-radius: 8px;
-    text-align: center;
-    width: 250px;
-  }
-  
-  .offer-image {
-    width: 100%;
-    height: 150px;
-    object-fit: cover;
-    border-radius: 8px;
-  }
-  
-  .offer-details {
-    margin-top: 10px;
-  }
-  
-  .offer-name {
-    font-size: 1.2em;
-    margin-bottom: 10px;
-  }
-  
-  .offer-description {
-    font-size: 1em;
-    margin-bottom: 10px;
-  }
-  
-  .offer-price {
-    font-size: 1.2em;
-    margin-bottom: 10px;
-  }
-  
-  .edit-button,
-  .delete-button {
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    margin: 5px;
-  }
-  
-  .edit-button {
-    background-color: #4CAF50;
-    color: white;
-  }
-  
-  .delete-button {
-    background-color: #f44336;
-    color: white;
-  }
+  padding: 20px;
+}
+
+.main-title {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.date-section {
+  margin-bottom: 40px;
+}
+
+.date-title {
+  font-size: 1.5em;
+  margin-bottom: 10px;
+}
+
+.offers-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.offer-card {
+  border: 1px solid #ddd;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+  width: 250px;
+}
+
+.offer-image {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.offer-details {
+  margin-top: 10px;
+}
+
+.offer-name {
+  font-size: 1.2em;
+  margin-bottom: 10px;
+}
+
+.offer-description {
+  font-size: 1em;
+  margin-bottom: 10px;
+}
+
+.offer-price {
+  font-size: 1.2em;
+  margin-bottom: 10px;
+}
+
+.edit-button,
+.delete-button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 5px;
+}
+
+.edit-button {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.delete-button {
+  background-color: #f44336;
+  color: white;
+}
