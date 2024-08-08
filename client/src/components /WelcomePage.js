@@ -1,10 +1,13 @@
 import React from 'react';
+import Navbar from './navbar';
 
 
 const WelcomePage = () => {
 
   return (
-    <div className="welcome-container">
+    <div 
+    className="welcome-container">
+      <Navbar />
       <div className="welcome-content">
         <h1>Welcome to Blaze</h1>
         <div className="button-container">
