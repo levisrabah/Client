@@ -40,7 +40,7 @@ function App() {
         <Route path="/welcome" element={<WelcomePage />} />
         <Route path="categories/:id/meals" element={<Menu addToBasket={addToBasket} />} />
         <Route path="meals/:id" element={<MealPage addToBasket={addToBasket} />} />
-        <Route path="/basket" element={<BasketPage basketItems={basketItems} handleQuantityChange={handleQuantityChange} />} 
+        <Route path="/basket" element={<BasketPage basketItems={basketItems} handleQuantityChange={handleQuantityChange} />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="*" element={<Navigate to="/welcome" />} />

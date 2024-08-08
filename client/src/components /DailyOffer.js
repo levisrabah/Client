@@ -10,8 +10,12 @@ const DailyOffer = () => {
     description: '',
     price: ''
   });
+  const [role, setRole] = useState(''); // State to store the user's role
 
   useEffect(() => {
+    const userRole = localStorage.getItem('role'); // Get role from local storage
+    setRole(userRole);
+
     fetchOffers();
   }, []);
 
@@ -104,8 +108,12 @@ const DailyOffer = () => {
                   <h3 className="offer-name">{offer.name}</h3>
                   <p className="offer-description">{offer.description}</p>
                   <p className="offer-price">${offer.price}</p>
-                  <button className="edit-button" onClick={() => handleEdit(offer)}>Edit</button>
-                  <button className="delete-button" onClick={() => handleDelete(offer)}>Delete</button>
+                  {role === 'admin' && ( // Conditionally render buttons based on role
+                    <>
+                      <button className="edit-button" onClick={() => handleEdit(offer)}>Edit</button>
+                      <button className="delete-button" onClick={() => handleDelete(offer)}>Delete</button>
+                    </>
+                  )}
                 </div>
               </div>
             ))}
