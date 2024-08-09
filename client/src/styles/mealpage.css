@@ -1,15 +1,19 @@
 .meal-page {
   display: flex;
   align-items: flex-start;
-  padding: 20px;
-  background-color: rgba(255, 166, 1, 0.828);
+  padding: 40px;
+  background-color: #FFF8E1;
+  min-height: calc(100vh - 80px);
+  font-family: 'Arial', sans-serif;
 }
 
-.meal-page img {
-  width: 300px;
-  height: auto;
-  border-radius: 10px;
-  margin-right: 20px;
+.meal-image {
+  width: 400px;
+  height: 400px;
+  object-fit: cover;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  margin-right: 40px;
 }
 
 .meal-details {
@@ -17,43 +21,57 @@
   position: relative;
   display: flex;
   flex-direction: column;
+  background-color: white;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 .meal-details h1 {
   margin-top: 0;
+  color: #FF6F00;
+  font-size: 2.5em;
+  margin-bottom: 20px;
 }
 
 .meal-details p {
-  margin: 10px 0;
+  margin: 15px 0;
+  font-size: 1.1em;
+  line-height: 1.6;
 }
 
 #name {
   text-decoration: underline;
+  color: #FF6F00;
 }
 
 #topic {
-  font-size: larger;
+  font-size: 1.2em;
   font-style: italic;
+  color: #666;
 }
 
 #price {
   font-weight: bold;
+  font-size: 1.4em;
+  color: #4CAF50;
 }
 
 .add-to-cart-button {
   margin-top: auto; /* Pushes the button to the bottom */
   padding: 10px 20px;
-  background-color: rgb(255, 0, 0);
+  background-color: #FF6F00;
   color: #fff;
   text-decoration: none;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   align-self: flex-start; /* Align the button to the left */
+  transition: background-color 0.3s ease;
 }
 
 .add-to-cart-button:hover {
-  background-color: darkred;
+  background-color: #E65100;
 }
 
 .edit-delete-buttons {
@@ -61,7 +79,7 @@
   bottom: 10px;
   right: 10px;
   display: flex;
-  gap: 10px;
+  gap: 15px;
 }
 
 .edit-delete-buttons button {
@@ -85,19 +103,88 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.7);
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 1000;
 }
 
 .popup-content {
   background: white;
-  padding: 20px;
-  border-radius: 5px;
+  padding: 40px;
+  border-radius: 15px;
   text-align: center;
+  max-width: 400px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.popup-content h2 {
+  color: #FF6F00;
+  margin-bottom: 20px;
+}
+
+.popup-content p {
+  margin: 10px 0;
+  font-size: 1.1em;
+}
+
+.popup-content h3 {
+  margin-top: 20px;
+  color: #4CAF50;
 }
 
 .popup-content button {
-  margin-top: 10px;
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #FF6F00;
+  color: white;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  font-size: 1em;
+  transition: background-color 0.3s ease;
+}
+
+.popup-content button:hover {
+  background-color: #E65100;
+}
+
+/* Styles for the edit form */
+form input, form textarea {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 1em;
+}
+
+form textarea {
+  min-height: 100px;
+}
+
+form button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  font-size: 1em;
+  transition: background-color 0.3s ease;
+}
+
+form button[type="submit"] {
+  background-color: #4CAF50;
+  color: white;
+}
+
+form button[type="submit"]:hover {
+  background-color: #45a049;
+}
+
+form button[type="button"] {
+  background-color: #f44336;
+  color: white;
+}
+
+form button[type="button"]:hover {
+  background-color: #d32f2f;
 }

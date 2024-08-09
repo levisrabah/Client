@@ -1,11 +1,13 @@
 .daily-offer-container {
   padding: 20px;
+  position: relative;
 }
 
 .main-title {
   text-align: center;
   margin-bottom: 20px;
 }
+
 
 .date-section {
   margin-bottom: 40px;
@@ -20,6 +22,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
+  justify-content: center;
 }
 
 .offer-card {
@@ -28,6 +31,12 @@
   border-radius: 8px;
   text-align: center;
   width: 250px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+}
+
+.offer-card:hover {
+  transform: translateY(-5px);
 }
 
 .offer-image {
@@ -54,15 +63,19 @@
 .offer-price {
   font-size: 1.2em;
   margin-bottom: 10px;
+  font-weight: bold;
+  color: #4CAF50;
 }
 
 .edit-button,
-.delete-button {
+.delete-button,
+.order-button {
   padding: 10px 20px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   margin: 5px;
+  transition: background-color 0.3s ease;
 }
 
 .edit-button {
@@ -70,9 +83,26 @@
   color: white;
 }
 
+.edit-button:hover {
+  background-color: #45a049;
+}
+
 .delete-button {
   background-color: #f44336;
   color: white;
+}
+
+.delete-button:hover {
+  background-color: #d32f2f;
+}
+
+.order-button {
+  background-color: #008CBA;
+  color: white;
+}
+
+.order-button:hover {
+  background-color: #007095;
 }
 
 .add-offer-button {
@@ -83,6 +113,11 @@
   color: white;
   cursor: pointer;
   margin-bottom: 20px;
+  transition: background-color 0.3s ease;
+}
+
+.add-offer-button:hover {
+  background-color: #007095;
 }
 
 .add-form-container,
@@ -91,6 +126,7 @@
   padding: 20px;
   border-radius: 8px;
   margin-top: 20px;
+  background-color: #f9f9f9;
 }
 
 .add-form-container form,
@@ -109,6 +145,7 @@
   padding: 10px;
   border: 1px solid #ddd;
   border-radius: 5px;
+  margin-bottom: 10px;
 }
 
 .add-form-container button,
@@ -118,23 +155,46 @@
   border-radius: 5px;
   cursor: pointer;
   margin-top: 10px;
+  transition: background-color 0.3s ease;
 }
 
-.add-form-container button {
+.add-form-container button[type="submit"],
+.edit-form-container button[type="submit"] {
   background-color: #4CAF50;
   color: white;
 }
 
-.add-form-container button.cancel {
-  background-color: #f44336;
+.add-form-container button[type="submit"]:hover,
+.edit-form-container button[type="submit"]:hover {
+  background-color: #45a049;
 }
 
-.order-button {
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  background-color: #008CBA;
+.add-form-container button[type="button"],
+.edit-form-container button[type="button"] {
+  background-color: #f44336;
   color: white;
-  cursor: pointer;
-  margin: 5px;
+}
+
+.add-form-container button[type="button"]:hover,
+.edit-form-container button[type="button"]:hover {
+  background-color: #d32f2f;
+}
+
+.pop {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #4CAF50;
+  color: white;
+  padding: 15px 30px;
+  border-radius: 5px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+  z-index: 1000;
+  animation: fadeInOut 3s ease;
+}
+
+@keyframes fadeInOut {
+  0%, 100% { opacity: 0; }
+  10%, 90% { opacity: 1; }
 }
