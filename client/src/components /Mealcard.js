@@ -10,7 +10,7 @@ function MealCard({ id, name, price, image }) {
       </div>
       <div className="meal-card-details">
         <h3>{name}</h3>
-        <p>Price: ${price}</p>
+        <p>${price.toFixed(2)}</p>
         <Link to={`/meals/${id}`}>View Details</Link>
       </div>
     </div>

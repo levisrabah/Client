@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
+
 import Navbar from './navbar';
 import '../styles/DailyOffer.css';
 
-const DailyOffer = () => {
+const DailyOffer = ({ addToBasket }) => {
   const [offers, setOffers] = useState({});
   const [editingOffer, setEditingOffer] = useState(null);
   const [creatingOffer, setCreatingOffer] = useState(false);
@@ -13,12 +14,13 @@ const DailyOffer = () => {
     description: '',
     price: ''
   });
-  const [role, setRole] = useState(''); // State to store the user's role
-  const [token, setToken] = useState(''); // State to store JWT token
+  const [role, setRole] = useState('');
+  const [token, setToken] = useState('');
+  const [showSuccessPopup, setShowSuccessPopup] = useState(false);
 
   useEffect(() => {
-    const userRole = localStorage.getItem('role'); // Get role from local storage
-    const userToken = localStorage.getItem('token'); // Get token from local storage
+    const userRole = localStorage.getItem('role');
+    const userToken = localStorage.getItem('token');
     setRole(userRole);
     setToken(userToken);
 
@@ -30,7 +32,6 @@ const DailyOffer = () => {
       const response = await fetch('http://127.0.0.1:5555/offers');
       if (response.ok) {
         const data = await response.json();
-        console.log('Fetched data:', data);
         setOffers(data);
       } else {
         console.error('Failed to fetch offers');
@@ -40,10 +41,16 @@ const DailyOffer = () => {
     }
   };
 
+  const handleAddToBasket = (offer) => {
+    addToBasket(offer);
+    setShowSuccessPopup(true);
+    setTimeout(() => setShowSuccessPopup(false), 3000);
+  };
+
   const handleEdit = (offer) => {
     setEditingOffer(offer);
     setOfferForm({
-      date: new Date().toISOString().split('T')[0], // Default to today's date
+      date: new Date().toISOString().split('T')[0],
       name: offer.name,
       description: offer.description,
       price: offer.price
@@ -59,8 +66,7 @@ const DailyOffer = () => {
         }
       });
       if (response.ok) {
-        console.log('Deleted offer:', offer);
-        fetchOffers(); // Refresh offers after deletion
+        fetchOffers();
       } else {
         console.error('Failed to delete offer');
       }
@@ -80,7 +86,6 @@ const DailyOffer = () => {
     e.preventDefault();
     try {
       if (editingOffer) {
-        // Handle update
         const updatedData = {
           date: offerForm.date,
           meal: {
@@ -98,17 +103,15 @@ const DailyOffer = () => {
           body: JSON.stringify(updatedData)
         });
         if (response.ok) {
-          console.log('Updated offer:', editingOffer);
           setEditingOffer(null);
-          fetchOffers(); // Refresh offers after update
+          fetchOffers();
         } else {
           console.error('Failed to update offer');
         }
       } else {
-        // Handle create
         const newOfferData = {
           date: offerForm.date,
-          meals: [offerForm.mealId] // Adjust based on your backend requirements
+          meals: [offerForm.mealId]
         };
         const response = await fetch('http://127.0.0.1:5555/offers', {
           method: 'POST',
@@ -119,13 +122,12 @@ const DailyOffer = () => {
           body: JSON.stringify(newOfferData)
         });
         if (response.ok) {
-          console.log('Created new offer');
           setCreatingOffer(false);
           setOfferForm({
             date: '',
             mealId: ''
           });
-          fetchOffers(); // Refresh offers after creation
+          fetchOffers();
         } else {
           console.error('Failed to create offer');
         }
@@ -137,10 +139,11 @@ const DailyOffer = () => {
 
   return (
     <div className="daily-offer-container">
-      <Navbar /> {/* Render Navbar component */}
+      <Navbar />
       <h1 className="main-title">Check out today's offers:</h1>
 
-      {/* Admin functionality to add a new offer */}
+      
+
       {role === 'admin' && (
         <>
           <button className="add-offer-button" onClick={() => setCreatingOffer(true)}>Add Offer</button>
@@ -184,11 +187,14 @@ const DailyOffer = () => {
                   <h3 className="offer-name">{offer.name}</h3>
                   <p className="offer-description">{offer.description}</p>
                   <p className="offer-price">${offer.price}</p>
-                  {role === 'admin' && ( // Conditionally render buttons based on role
+                  {role === 'admin' && (
                     <>
                       <button className="edit-button" onClick={() => handleEdit(offer)}>Edit</button>
                       <button className="delete-button" onClick={() => handleDelete(offer)}>Delete</button>
                     </>
+                  )}
+                  {role === 'user' && (
+                    <button className="order-button" onClick={() => handleAddToBasket(offer)}>Order</button>
                   )}
                 </div>
               </div>
@@ -196,6 +202,10 @@ const DailyOffer = () => {
           </div>
         </div>
       ))}
+
+      {showSuccessPopup && (
+        <div className="pop">The Order was Successfully Placed</div>
+      )}
 
       {editingOffer && (
         <div className="edit-form-container">

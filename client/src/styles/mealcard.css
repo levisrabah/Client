@@ -1,48 +1,80 @@
 .meal-card {
-    display: inline-block;
-    width: 30%;
-    margin: 1%;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    overflow: hidden;
-    text-align: center;
-    background-color: #fff;
-    transition: transform 0.3s;
+  display: inline-block;
+  width: calc(33.333% - 20px);
+  margin: 10px;
+  border-radius: 15px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  text-align: center;
+  background-color: #fff;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.meal-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+.meal-card-image {
+  position: relative;
+  overflow: hidden;
+  padding-top: 75%; /* 4:3 Aspect Ratio */
+}
+
+.meal-card-image img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.meal-card:hover .meal-card-image img {
+  transform: scale(1.1);
+}
+
+.meal-card-details {
+  padding: 20px;
+}
+
+.meal-card-details h3 {
+  margin: 0 0 10px;
+  font-size: 1.4em;
+  color: #333;
+}
+
+.meal-card-details p {
+  color: #666;
+  font-size: 1.1em;
+  margin-bottom: 15px;
+}
+
+.meal-card-details a {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #FF6F00;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 50px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.meal-card-details a:hover {
+  background-color: #E65100;
+}
+
+@media (max-width: 1200px) {
+  .meal-card {
+    width: calc(50% - 20px);
   }
-  
-  .meal-card:hover {
-    transform: scale(1.05);
+}
+
+@media (max-width: 768px) {
+  .meal-card {
+    width: calc(100% - 20px);
   }
-  
-  .meal-card-image img {
-    width: 100%;
-    height: auto;
-    display: block;
-  }
-  
-  .meal-card-details {
-    padding: 15px;
-  }
-  
-  .meal-card-details h3 {
-    margin: 10px 0;
-  }
-  
-  .meal-card-details p {
-    color: #555;
-  }
-  
-  .meal-card-details a {
-    display: inline-block;
-    margin-top: 10px;
-    padding: 10px 20px;
-    background-color: rgb(225, 147, 3);
-    color: #fff;
-    text-decoration: none;
-    border-radius: 5px;
-  }
-  
-  .meal-card-details a:hover {
-    background-color:  rgba(225, 147, 3, 0.781);
-  }
-  
+}

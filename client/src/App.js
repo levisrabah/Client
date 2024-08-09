@@ -45,7 +45,7 @@ function App() {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="*" element={<Navigate to="/welcome" />} />
-        <Route path="/offers" element={<DailyOffer />} />
+        <Route path="/offers" element={<DailyOffer addToBasket={addToBasket} />} />
         <Route path="/categories" element={<CategoryPage />} />
         <Route path="/error" element={<ErrorPage />} />
       </Routes>
