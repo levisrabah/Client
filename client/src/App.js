@@ -9,6 +9,7 @@ import Menu from './components /Menu';
 import BasketPage from './components /basketPage';
 import CategoryPage from './components /categoryPage';
 import DailyOffer from './components /DailyOffer';
+import ErrorPage from './components /ErrorPage';
 
 function App() {
   const [basketItems, setBasketItems] = useState([]);
@@ -46,6 +47,7 @@ function App() {
         <Route path="*" element={<Navigate to="/welcome" />} />
         <Route path="/offers" element={<DailyOffer />} />
         <Route path="/categories" element={<CategoryPage />} />
+        <Route path="/error" element={<ErrorPage />} />
       </Routes>
     </Router>
   );
