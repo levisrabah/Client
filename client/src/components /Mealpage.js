@@ -9,6 +9,8 @@ function MealPage({ addToBasket }) {
   const [editing, setEditing] = useState(false);
   const [mealForm, setMealForm] = useState({});
   const [role, setRole] = useState('');
+  const [showPopup, setShowPopup] = useState(false);
+  const [popupDetails, setPopupDetails] = useState({});
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -85,6 +87,21 @@ function MealPage({ addToBasket }) {
     }
   };
 
+  const handleAddToCart = () => {
+    addToBasket(meal);
+    const currentTime = new Date().toLocaleString(); // Get current time
+    setPopupDetails({
+      name: meal.name,
+      category: 'Meal', // Assuming the category is "Meal" or you can adjust accordingly
+      time: currentTime
+    });
+    setShowPopup(true);
+  };
+
+  const closePopup = () => {
+    setShowPopup(false);
+  };
+
   if (!meal) {
     return <div>Loading...</div>;
   }
@@ -128,7 +145,7 @@ function MealPage({ addToBasket }) {
               <h1>{meal.name}</h1>
               <p>{meal.description}</p>
               <p>Price: ${meal.price}</p>
-              <button className="add-to-cart-button" onClick={() => addToBasket(meal)}>
+              <button className="add-to-cart-button" onClick={handleAddToCart}>
                 Add to Cart
               </button>
               {role === 'admin' && (
@@ -141,6 +158,24 @@ function MealPage({ addToBasket }) {
           </>
         )}
       </div>
+      {showPopup && (
+        <div className="popup">
+          <div className="popup-content">
+            <h2>Meal Added to Cart!</h2>
+            <p>
+              <strong>Meal Name:</strong> {popupDetails.name}
+            </p>
+            <p>
+              <strong>Category:</strong> {popupDetails.category}
+            </p>
+            <p>
+              <strong>Added At:</strong> {popupDetails.time}
+            </p>
+            <h3>Thank you for adding to your cart!</h3>
+            <button onClick={closePopup}>Close</button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
