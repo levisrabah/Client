@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import './registerPage.css'
+import './registerPage.css';
+import Navbar from '../navbar';
 
 const RegisterPage = () => {
   const [username, setUsername] = useState('');
@@ -29,10 +30,14 @@ const RegisterPage = () => {
   };
 
   return (
+   <>
+   <Navbar />
     <div className="register-container">
       <div className="register-image">
         <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxleHBsb3JlLWZlZWR8MXx8fGVufDB8fHx8fA%3D%3D" alt="Pizza" />
-        <div className="image-text">Best Blaze meal Try IT</div>
+        <div className="image-text">
+          Best Blaze meal, Try It!
+        </div>
       </div>
       <div className="register-form">
         <h2>Register</h2>
@@ -43,7 +48,7 @@ const RegisterPage = () => {
             <input
               type="text"
               value={username}
-              placeholder="username"
+              placeholder="Username"
               onChange={(e) => setUsername(e.target.value)}
               required
             />
@@ -53,7 +58,7 @@ const RegisterPage = () => {
             <input
               type="email"
               value={email}
-              placeholder="email"
+              placeholder="Email"
               onChange={(e) => setEmail(e.target.value)}
               required
             />
@@ -63,7 +68,7 @@ const RegisterPage = () => {
             <input
               type="password"
               value={password}
-              placeholder="password"
+              placeholder="Password"
               onChange={(e) => setPassword(e.target.value)}
               required
             />
@@ -79,6 +84,7 @@ const RegisterPage = () => {
         </form>
       </div>
     </div>
+    </> 
   );
 };
 
