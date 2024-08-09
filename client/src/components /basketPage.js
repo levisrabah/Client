@@ -1,11 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import '../styles/basket.css';
 import Navbar from './navbar';
+import { useTransactions } from './TransactionContext';
+import { useNavigate } from 'react-router-dom';
 
 const BasketPage = ({ basketItems = [], handleQuantityChange }) => {
   const [total, setTotal] = useState(0);
   const [showReceipt, setShowReceipt] = useState(false);
   const [userName, setUserName] = useState('');
+  const { addTransaction } = useTransactions();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const newTotal = basketItems.reduce((sum, item) => sum + item.price * item.quantity, 0);
@@ -17,6 +21,16 @@ const BasketPage = ({ basketItems = [], handleQuantityChange }) => {
       alert('Please enter your name before confirming the order.');
       return;
     }
+
+    const newTransaction = {
+      id: Date.now(),
+      userName: userName,
+      date: new Date().toISOString().split('T')[0],
+      items: basketItems.map(item => item.name),
+      total: total
+    };
+
+    addTransaction(newTransaction);
     setShowReceipt(true);
   };
 
@@ -33,7 +47,10 @@ const BasketPage = ({ basketItems = [], handleQuantityChange }) => {
           </li>
         ))}
       </ul>
-      <button onClick={() => setShowReceipt(false)}>Close</button>
+      <button onClick={() => {
+        setShowReceipt(false);
+        navigate('/transactions');
+      }}>View All Transactions</button>
     </div>
   );
 
