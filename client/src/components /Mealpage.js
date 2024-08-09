@@ -14,7 +14,7 @@ function MealPage({ addToBasket }) {
       .then(data => {
         setMeal(data); // Corrected from setMeals to setMeal
         if (data.categoryId) { // Ensure categoryId is available in data
-          fetch(`http://localhost:5000/categories/${data.categoryId}`)
+          fetch(`http://localhost:5555/categories/${data.categoryId}`)
             .then(response => response.json())
             .then(category => setCategoryName(category.category_name))
             .catch(error => console.error('Error fetching category:', error));

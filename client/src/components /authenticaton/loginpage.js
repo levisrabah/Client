@@ -33,7 +33,10 @@ const LoginPage = () => {
   return (
     <div className="login-container">
       <div className="login-image">
-        <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxleHBsb3JlLWZlZWR8MXx8fGVufDB8fHx8fA%3D%3D" alt="Pizza" />
+        <img
+          src="https://images.unsplash.com/photo-1513104890138-7c749659a591?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxleHBsb3JlLWZlZWR8MXx8fGVufDB8fHx8fA%3D%3D"
+          alt="Pizza"
+        />
         <div className="image-text">Best Blaze meal Try IT</div>
       </div>
       <div className="login-form">
@@ -62,9 +65,12 @@ const LoginPage = () => {
           </div>
           <button type="submit" className="login-button">Login</button>
         </form>
-        <button className="register-button" onClick={() => navigate('/register')}>
-          Register here
-        </button>
+        <p className="register-text">
+          Don't have an account?{' '}
+          <span className="register-link" onClick={() => navigate('/register')}>
+            Register
+          </span>
+        </p>
       </div>
     </div>
   );
