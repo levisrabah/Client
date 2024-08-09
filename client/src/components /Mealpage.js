@@ -9,12 +9,12 @@ function MealPage() {
   const [categoryName, setCategoryName] = useState('');
 
   useEffect(() => {
-    fetch(`http://localhost:5000/categories/${categoryId}/meals`)
+    fetch(`http://localhost:5555/categories/${categoryId}/meals`)
       .then(response => response.json())
       .then(data => {
         setMeals(data);
         if (data.length > 0) {
-          fetch(`http://localhost:5000/categories/${categoryId}`)
+          fetch(`http://localhost:5555/categories/${categoryId}`)
             .then(response => response.json())
             .then(category => setCategoryName(category.category_name))
             .catch(error => console.error('Error fetching category:', error));

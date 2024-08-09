@@ -19,13 +19,15 @@ const CategoryPage = () => {
       <div className="category-container">
         <div className="category-cards">
           {categories.map(category => (
-            <div className="category-card" key={category.id}>
-              <img src={category.image} alt={category.category_name} />
-              <h2>{category.category_name}</h2>
-              <div className="description">
-                <p>{category.description}</p>
+            <Link to={`/categories/${category.id}/meals`} key={category.id} className="category-card-link">
+              <div className="category-card">
+                <img src={category.image} alt={category.category_name} />
+                <h2>{category.category_name}</h2>
+                <div className="description">
+                  <p>{category.description}</p>
+                </div>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </div>
