@@ -7,7 +7,7 @@ function Menu() {
   const [meals, setMeals] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/categories/${id}/meals`)
+    fetch(`http://localhost:5555/categories/${id}/meals`)
       .then(response => response.json())
       .then(data => setMeals(data))
       .catch(error => console.error(error));

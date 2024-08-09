@@ -1,17 +1,27 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import '../styles/mealpage.css';
+import Navbar from './navbar';
 
 function MealPage({ addToBasket }) {
   const { id } = useParams();
   const [meal, setMeal] = useState(null);
-
+  const [categoryName, setCategoryName] = useState(null);
+  
   useEffect(() => {
     fetch(`http://localhost:5000/meals/${id}`)
       .then(response => response.json())
-      .then(data => setMeal(data))
-      .catch(error => console.error(error));
-  }, [id]);
+      .then(data => {
+        setMeal(data); // Corrected from setMeals to setMeal
+        if (data.categoryId) { // Ensure categoryId is available in data
+          fetch(`http://localhost:5000/categories/${data.categoryId}`)
+            .then(response => response.json())
+            .then(category => setCategoryName(category.category_name))
+            .catch(error => console.error('Error fetching category:', error));
+        }
+      })
+      .catch(error => console.error('Error fetching meal:', error));
+  }, [id]); // Use id as the dependency
 
   if (!meal) {
     return <div>Loading...</div>;
@@ -27,13 +37,13 @@ function MealPage({ addToBasket }) {
       <img src={meal.image} alt={meal.name} />
       <div className="meal-details">
         <h1 id='name'>{meal.name}</h1>
-        <h2 id='category'>This is one of our {meal.category}</h2>
+        <h2 id='category'>This is one of our {categoryName}</h2> {/* Use categoryName */}
         <p id='topic'>Description</p>
         <p id='description'>-{meal.description}</p>
         <p id='price'>Price: ${meal.price}</p>
         <button className="add-to-cart-button" onClick={handleAddToCart}>
           Add to Cart
-        </button>
+        </button> {/* Correctly closed button tag */}
       </div>
     </div>
   );
