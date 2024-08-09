@@ -74,3 +74,67 @@
   background-color: #f44336;
   color: white;
 }
+
+.add-offer-button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #008CBA;
+  color: white;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+
+.add-form-container,
+.edit-form-container {
+  border: 1px solid #ddd;
+  padding: 20px;
+  border-radius: 8px;
+  margin-top: 20px;
+}
+
+.add-form-container form,
+.edit-form-container form {
+  display: flex;
+  flex-direction: column;
+}
+
+.add-form-container label,
+.edit-form-container label {
+  margin-bottom: 10px;
+}
+
+.add-form-container input,
+.edit-form-container input {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.add-form-container button,
+.edit-form-container button {
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.add-form-container button {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.add-form-container button.cancel {
+  background-color: #f44336;
+}
+
+.order-button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #008CBA;
+  color: white;
+  cursor: pointer;
+  margin: 5px;
+}
