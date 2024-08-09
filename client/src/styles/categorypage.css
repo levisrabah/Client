@@ -14,9 +14,9 @@
   align-items: center;
   gap: 80px;
   position: relative;
-  top: 275px;
+  top: 280px;
   right: 230px;
-  width: 130%;
+  width: 100%;
   max-width: 1200px;
 }
 
@@ -79,6 +79,12 @@
   filter: blur(4px) !important;
 }
 
+.category-card img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
 .category-card:hover {
   transform: scale(1.1);
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
@@ -86,12 +92,9 @@
   filter: blur(0px);
 }
 
-.category-card img {
-  width: 100%;
-  height: auto;
-}
-
 .category-card h2 {
+  position: absolute;
+  bottom: 300px;
   color: white;
   font-family: 'Reem Kufi';
   font-weight: bolder;
