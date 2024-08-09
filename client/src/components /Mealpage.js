@@ -9,7 +9,7 @@ function MealPage({ addToBasket }) {
   const [categoryName, setCategoryName] = useState(null);
   
   useEffect(() => {
-    fetch(`http://localhost:5000/meals/${id}`)
+    fetch(`http://localhost:5555/meals/${id}`)
       .then(response => response.json())
       .then(data => {
         setMeal(data); // Corrected from setMeals to setMeal
