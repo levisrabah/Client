@@ -1,141 +1,97 @@
-# Book-A-Meal
+# Blaze
 
-## Group Members: Levis Rabah, Elvis Moses, Meshack Orina, Allan Too, Arnold Maina
+Welcome to Blaze, your go-to solution for seamless meal bookings and efficient restaurant management. Blaze offers a user-friendly platform that allows customers to effortlessly book meals, manage their baskets, and check out, while providing administrators with powerful tools to manage the menu, create special offers, and track daily earnings. Whether you’re a diner or an admin, Blaze ensures a smooth and enjoyable experience from start to finish.
 
-## Date 29/07/2024
+## Table of Contents
 
-# Introduction
+1. [Features](#features)
+2. [Project Structure](#project-structure)
+3. [Technologies Used](#technologies-used)
+4. [Installation and Setup](#installation-and-setup)
+5. [Running the Project](#running-the-project)
+6. [Authors](#authors)
+7. [License](#license)
 
-Book-A-Meal aims to facilitate food ordering by customers and assist caterers in managing their meal options and tracking orders. The platform supports multiple caterers, offering functionalities for meal management, menu setup, and order tracking.
+## Features
 
-## Problem Statement
+### MVP Features
 
-Chefs face challenges in managing their meal options, setting up daily menus, and tracking orders. Customers need an efficient way to view daily menus and place orders.
+### User Authentication
 
-## Solution
-
-This project develops a web-based meal management system that addresses these challenges by providing an intuitive platform for both caterers and customers. The system includes functionalities for meal management, menu setup, order tracking, and customer notifications.
-
-
-## User Stories
-
-# Admin (Caterer)
-
-1. Meal Management:
-    Create: Add, modify, and delete meal options (e.g., Beef with rice, Beef with fries).
-    Read: View list of meal options.
-    Update: Edit meal details.
-    Delete: Remove meal options.
-
-2. Menu Setup:
-    Create: Set up a menu for a specific day.
-    Read: View the daily menu.
-    Update: Modify the daily menu.
-    Delete: Remove items from the daily menu.
-
-3. Order Tracking:
-    Create: Record orders made by users.
-    Read: View order history and revenue details.
-    Update: Update order statuses.
-    Delete: Remove orders from the system.
-
-4. Revenue Tracking:
-    Read: View the amount of money made by the end of the day.
-    Read: View order history.
-
-## User (Customer)
-
-1. Account Management:
-   Create: Create an account and log in.
-
-2. Menu Interaction:
-    Read: View the menu for a specific day.
-    Create: Select a meal option from the menu. 
-    Update: Change meal choice.
-    Read: View order history.
-
-3. Notifications:
-    Read: Receive notifications when the menu for the day is set.
+#### Sign Up
 
 
-## Getting Started
+- **Form Validation**: The sign-up form ensures the correct format for username, email, and password.
+- **Account Creation**: Users can create an account with validated details.
 
+#### Log In
 
+- **User Authentication**: Users can log in with their registered credentials.
+- **Welcome Dashboard**: Upon successful login, users are welcomed to the dashboard, detailing what the app is about.
 
-### Prerequisites
+### Dashboard
+-**Category Selection**:Users can select the category of the meal that they are intrested in.
+-**Meal Selection**:Users can select meals from the menu of the category that they choose.
+-**Admin Permission**:In this page an admin has the ability to create a meal which will automatically be stored under that category.The admin is required to input a name ,description,price and an image link to be used in the meal presentation.
 
-- Python 3.x
-- Pip (Python package installer)
-- Node.js and Npm (for React frontend)
+### Meal information
+-**Meal Details**:Users as well as admins can view the information on individual meals including their name,their brief description and the price in dollars.
+-**Admin Permissions**:In this page and admin has the ablity to either edit or delete a meal
 
-### Installation
+### Booking Process
+-**Booking Meals**:A user can book a meal either throught the meal page or through the offers page.
+-**Total Daiy Earnings**:When a user books a meal the price of that meal is saved and added to the total earnings of the admin on that day.
+-**Booking Confirmation**:When a user succesfuly books a meal, a pop up is shown that confirms to the user that the meaal specifically has been booked.
+### Basket
+-**View and Edit**:A user can see the meals they have booked in their basket and can alter the quantity.
+-**CHeckout**:Once finished,A user can checkout from the basket.This will require the user to input a name in which the transaction will be recorded under.
+ 
+### Offers
+-**View and book**:In this page clients can view offers baased on the dates and can book meals from this page as well
+-**Admin Permisions**:The admin here has the ability to select a date and put a meal up as one that is on offer by providing a date and a meal id.The admin must do this for each individual meal for that day.
+### Strech features.
+-**Transaction History**:A user can view their transaction history as they checkout on the basket page.
 
-1. Clone the repository:
+## Project Structure
 
-   ```bash
-   git clone https://github.com/levisrabah/Client
-
-## Installation
-
-1. Get a free API Key at:
-```
-https://github.com/levisrabah/Client```
-2.Clone the repo
-```
-git clone https://github.com/levisrabah/Client
-3.And Lastly in the terminal, install relevent files with:
-```
- npm install --prefix client
- pipenv install
- pipenv install sqlalchemy alembic
- ```
-
-## Setup
-
-1. After installation, run this command in your terminal in the server directory to get backend running :
-
-```
-  pipenv shell
-  python app.py
-```
-2. Then run this command in your terminal  to get frontend running using React:
-
-```
-  npm start --prefix client
-```
-
-## Technologies used
-1. Python    
-2. SqlAlchemy
-3. React
-4. Flask
-
-
-## Installation Requirements
-1. Git
-2. React
-3. Flask
-4. Npm
-
-## Licenses
-MIT License
-
-Copyright (c)  BOOK A MEAL (GROUP 6) 2024
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+### Client side
+├──client
+|       ├──node_modules/
+|       ├──public/
+|       ├──src/
+|           ├──components/
+|               ├──authentication/
+|                   ├──AuthContext.js
+|                   ├──loginpage.js
+|                   ├──PrivateRoute.js
+|                   ├──Registerpage.js
+|                   ├──loginpage.css
+|                   ├──registerpage.css
+|               ├──basketpage.js
+|               ├──categorypage.js
+|               ├──dailyoffer.js
+|               ├──errorpage.js
+|               ├──mealcard.js
+|               ├──mealpage.js
+|               ├──menu.js
+|               ├──navbar.js
+|               ├──transactioncotext.js
+|               ├──transaction.js
+|               ├──welcomepage.js
+|           ├──styles/
+|               ├──basket.css
+|               ├──categorypage.css
+|               ├──dailyoffer.css
+|               ├──mealcard.css
+|               ├──mealpage.css
+|               ├──menu.css
+|               ├──navbar.css
+|               ├──productpage.css
+|               ├──transaction.css
+|               ├──welcomepage.css
+|           ├──App.css
+|           ├──App.js
+|           ├──App.test.js
+|           ├──index.css
+|           ├──index.js
+├──
