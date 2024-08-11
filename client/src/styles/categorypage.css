@@ -120,3 +120,87 @@
   font-size: 15px;
   font-family: 'Reem Kufi';
 }
+
+/* Responsive Styles */
+@media screen and (max-width: 1200px) {
+  .category-cards {
+    top: 200px;
+    right: 150px;
+    gap: 60px;
+  }
+  
+  .category-card:nth-child(1) {
+    left: 50px;
+    height: 520px;
+  }
+
+  .category-card:nth-child(2) {
+    left: 500px;
+    height: 500px;
+  }
+
+  .category-card:nth-child(3) {
+    left: 400px;
+    height: 480px;
+  }
+
+  .category-card:nth-child(4) {
+    left: 300px;
+    height: 460px;
+  }
+
+  .category-card:nth-child(5) {
+    left: 240px;
+    height: 440px;
+  }
+
+  .category-card h2 {
+    font-size: 36px;
+    bottom: 250px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .category-cards {
+    flex-direction: column;
+    top: 100px;
+    right: 0;
+    gap: 40px;
+    max-width: 100%;
+  }
+  
+  .category-card {
+    position: relative;
+    width: 80%;
+    left: 0;
+    height: auto;
+    max-height: none;
+    margin-bottom: 20px;
+    transform: none;
+    box-shadow: none;
+    filter: none;
+    z-index: 1;
+  }
+  
+  .category-card h2 {
+    font-size: 28px;
+    bottom: 20px;
+  }
+  
+  .category-card:hover {
+    transform: none;
+    box-shadow: none;
+    z-index: 1;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .category-card h2 {
+    font-size: 24px;
+    bottom: 10px;
+  }
+
+  .category-card .description {
+    font-size: 12px;
+  }
+}
