@@ -7,6 +7,7 @@ const BasketPage = ({ basketItems = [], handleQuantityChange }) => {
   const [total, setTotal] = useState(0);
   const [showReceipt, setShowReceipt] = useState(false);
   const [userName, setUserName] = useState('');
+  const [showNamePopup, setShowNamePopup] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -16,7 +17,7 @@ const BasketPage = ({ basketItems = [], handleQuantityChange }) => {
 
   const handleConfirmOrder = async () => {
     if (userName.trim() === '') {
-      alert('Please enter your name before confirming the order.');
+      setShowNamePopup(true);
       return;
     }
 
@@ -24,7 +25,7 @@ const BasketPage = ({ basketItems = [], handleQuantityChange }) => {
       userName: userName,
       date: new Date().toISOString().split('T')[0],
       items: basketItems.map(item => item.name),
-      total: total
+      total: total,
     };
 
     try {
@@ -61,8 +62,23 @@ const BasketPage = ({ basketItems = [], handleQuantityChange }) => {
       </ul>
       <button onClick={() => {
         setShowReceipt(false);
-        navigate('/thank-you');  // Replace with the desired route
+        navigate('/order'); // Replace with the desired route
       }}>Ok</button>
+    </div>
+  );
+
+  const NamePopup = () => (
+    <div className="name-popup-overlay">
+      <div className="name-popup">
+        <h3>Please Enter Your Name</h3>
+        <input 
+          type="text" 
+          value={userName} 
+          onChange={(e) => setUserName(e.target.value)} 
+          placeholder="Your Name" 
+        />
+        <button onClick={() => setShowNamePopup(false)}>Close</button>
+      </div>
     </div>
   );
 
@@ -109,6 +125,7 @@ const BasketPage = ({ basketItems = [], handleQuantityChange }) => {
         )}
       </div>
       {showReceipt && <Receipt />}
+      {showNamePopup && <NamePopup />}
     </div>
   );
 };
