@@ -61,8 +61,8 @@ const BasketPage = ({ basketItems = [], handleQuantityChange }) => {
       </ul>
       <button onClick={() => {
         setShowReceipt(false);
-        navigate('/transactions');
-      }}>View All Transactions</button>
+        navigate('/thank-you');  // Replace with the desired route
+      }}>Ok</button>
     </div>
   );
 
