@@ -1,14 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import '../styles/basket.css';
 import Navbar from './navbar';
-import { useTransactions } from './TransactionContext';
 import { useNavigate } from 'react-router-dom';
 
 const BasketPage = ({ basketItems = [], handleQuantityChange }) => {
   const [total, setTotal] = useState(0);
   const [showReceipt, setShowReceipt] = useState(false);
   const [userName, setUserName] = useState('');
-  const { addTransaction } = useTransactions();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -16,22 +14,36 @@ const BasketPage = ({ basketItems = [], handleQuantityChange }) => {
     setTotal(newTotal);
   }, [basketItems]);
 
-  const handleConfirmOrder = () => {
+  const handleConfirmOrder = async () => {
     if (userName.trim() === '') {
       alert('Please enter your name before confirming the order.');
       return;
     }
 
     const newTransaction = {
-      id: Date.now(),
       userName: userName,
       date: new Date().toISOString().split('T')[0],
       items: basketItems.map(item => item.name),
       total: total
     };
 
-    addTransaction(newTransaction);
-    setShowReceipt(true);
+    try {
+      const response = await fetch('http://127.0.0.1:5555/transactions', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(newTransaction),
+      });
+
+      if (response.ok) {
+        setShowReceipt(true);
+      } else {
+        console.error('Failed to add transaction');
+      }
+    } catch (error) {
+      console.error('Error adding transaction:', error);
+    }
   };
 
   const Receipt = () => (
@@ -49,8 +61,8 @@ const BasketPage = ({ basketItems = [], handleQuantityChange }) => {
       </ul>
       <button onClick={() => {
         setShowReceipt(false);
-        navigate('/transactions');
-      }}>View All Transactions</button>
+        navigate('/thank-you');  // Replace with the desired route
+      }}>Ok</button>
     </div>
   );
 

@@ -1,10 +1,54 @@
-import React from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
+import { useNavigate } from 'react-router-dom';
 import '../styles/Transaction.css';
 import Navbar from './navbar';
-import { useTransactions } from './TransactionContext';
 
 const Transaction = () => {
-  const { transactions } = useTransactions();
+  const [transactions, setTransactions] = useState([]);
+  const navigate = useNavigate();
+
+  const fetchTransactions = useCallback(async () => {
+    try {
+      const token = localStorage.getItem('token');
+
+      if (!token) {
+        alert('You are not authenticated. Please log in.');
+        navigate('/login');
+        return;
+      }
+
+      const response = await fetch('http://127.0.0.1:5555/transactions', {
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`  // Include the token in the headers
+        }
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        setTransactions(data);
+      } else {
+        console.error('Failed to fetch transactions');
+        if (response.status === 401) {
+          alert('Unauthorized. Please log in again.');
+          navigate('/login');
+        }
+      }
+    } catch (error) {
+      console.error('Error fetching transactions:', error);
+    }
+  }, [navigate]);
+
+  useEffect(() => {
+    const role = localStorage.getItem('role');
+    if (role !== 'admin') {
+      alert('Access denied. Admins only.');
+      navigate('/login');
+    } else {
+      fetchTransactions();
+    }
+  }, [fetchTransactions, navigate]);
+
   const totalSum = transactions.reduce((sum, transaction) => sum + transaction.total, 0);
 
   const generateTotalAmount = () => {
