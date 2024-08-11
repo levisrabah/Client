@@ -7,6 +7,7 @@ function Navbar() {
         <div className="navbar">
             <p>Blaze</p>
             <div className="navbar-links">
+                <Link to="/Home">Home</Link>
                 <Link to="/categories">Order</Link>
                 <Link to="/basket">Basket</Link>
                 <Link to="/offers">Offers</Link>
