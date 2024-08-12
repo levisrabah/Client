@@ -3,6 +3,8 @@ import Navbar from './navbar';
 import { useNavigate } from 'react-router-dom';
 import '../styles/welcomePage.css';
 import videoBg from '../styles/video.mp4';
+import "bootstrap/dist/css/bootstrap.min.css";
+import "@fortawesome/fontawesome-free/css/all.min.css";
 
 const WelcomePage = () => {
   const navigate = useNavigate();
@@ -38,18 +40,16 @@ const WelcomePage = () => {
         </button>
       </div>
       <footer className="blaze-footer">
-        <div className="blaze-footer-section">
+        {/* <div className="blaze-footer-section">
           <h3 className="blaze-footer-title">Join Us</h3>
           <p className="blaze-footer-link">Become an Admin</p>
           <p className="blaze-footer-link">Become a User</p>
-        </div>
+        </div> */}
         <div className="blaze-footer-section">
-          <h3 className="blaze-footer-title">Top Categories</h3>
-          <p className="blaze-footer-link">Pizza</p>
-          <p className="blaze-footer-link">Beef Burger</p>
-          <p className="blaze-footer-link">Sandwich</p>
-          <p className="blaze-footer-link">Choma</p>
-          <p className="blaze-footer-link">Sea food</p>
+          <h3 className="blaze-footer-title">Blaze</h3>
+          <p className="blaze-footer-link">314-00100 Diddly Squat</p>
+          <p className="blaze-footer-link">copyright @2024</p>
+          
         </div>
         <div className="blaze-footer-section">
           <h3 className="blaze-footer-title">Legal</h3>
@@ -59,11 +59,20 @@ const WelcomePage = () => {
         </div>
         <div className="blaze-footer-section">
           <h3 className="blaze-footer-title">Connect</h3>
-          <div className="blaze-social-icons">
-            <i className="fab fa-facebook"></i>
-            <i className="fab fa-instagram"></i>
-            <i className="fab fa-twitter"></i>
-          </div>
+          <ul className="list-unstyled">
+            <li className="contact-item">
+              <i className="fab fa-twitter"></i> Twitter: Blaze
+            </li>
+            <li className="contact-item">
+              <i className="fab fa-instagram"></i> Instagram: Blaze
+            </li>
+            <li className="contact-item">
+              <i className="fab fa-facebook"></i> Facebook: Blaze
+            </li>
+            <li className="contact-item">
+              <i className="fab fa-email"></i> Email: Blaze
+            </li>
+          </ul>
         </div>
       </footer>
     </div>
