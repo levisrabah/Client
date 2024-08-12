@@ -1,84 +1,73 @@
-.errorPage {
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: white;
-    position: relative;
-    padding: 20px;
-    box-sizing: border-box;
-    flex-direction: column; /* Allow for vertical stacking */
+.error-page {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f8f9fa;
+  font-family: 'Arial', sans-serif;
+}
+
+.error-content {
+  text-align: center;
+  padding: 2rem;
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  max-width: 90%;
+  width: 400px;
+}
+
+.error-code {
+  font-size: 6rem;
+  font-weight: bold;
+  color: #007bff;
+  margin: 0;
+  line-height: 1;
+}
+
+.error-title {
+  font-size: 1.5rem;
+  color: #343a40;
+  margin: 1rem 0;
+}
+
+.error-message {
+  font-size: 1rem;
+  color: #6c757d;
+  margin-bottom: 2rem;
+}
+
+.home-button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.home-button:hover {
+  background-color: #0056b3;
+}
+
+@media (max-width: 480px) {
+  .error-code {
+    font-size: 4rem;
   }
-  
-  .errorContent {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    margin-top: auto; /* Push content down if there's space */
-    margin-bottom: auto; /* Push content up if there's space */
+
+  .error-title {
+    font-size: 1.25rem;
   }
-  
-  .errorCode {
-    font-size: 5vw;
-    font-family: 'Nosifier Caps', sans-serif;
-    font-weight: 50;
-    color: black;
+
+  .error-message {
+    font-size: 0.9rem;
   }
-  
-  .errorMessage {
-    font-size: 30px;
-    font-family: 'Nosifier Caps', sans-serif;;
-    font-weight: 30;
-    color: black;
-    margin: 20px 0;
-    max-width: 90%;
+
+  .home-button {
+    font-size: 0.9rem;
+    padding: 0.6rem 1.2rem;
   }
-  
-  .homeButtonContainer {
-    margin-top: 20px;
-  }
-  
-  .homeButton {
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    background-color: #f44336;
-    color: white;
-    cursor: pointer;
-    margin: 5px;
-  }
-  
-  /* Media query for smaller screens */
-  @media (max-width: 768px) {
-    .errorCode {
-      font-size: 20vw;
-    }
-  
-    .errorMessage {
-      font-size: 3vw;
-    }
-  
-    .homeButton {
-      font-size: 5vw;
-      padding: 15px 30px;
-    }
-  }
-  
-  /* Media query for very small screens like phones */
-  @media (max-width: 480px) {
-    .errorCode {
-      font-size: 25vw;
-    }
-  
-    .errorMessage {
-      font-size: 7vw;
-    }
-  
-    .homeButton {
-      font-size: 2vw;
-      padding: 20px 40px;
-    }
-  }
-  
+}

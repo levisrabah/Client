@@ -9,6 +9,7 @@ import Menu from './components /Menu';
 import BasketPage from './components /basketPage';
 import CategoryPage from './components /categoryPage';
 import DailyOffer from './components /DailyOffer';
+import ErrorPage from './components /ErrorPage';
 
 import Transaction from './components /Transactions';
 import { TransactionProvider } from './components /TransactionContext';
@@ -50,7 +51,7 @@ function App() {
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/offers" element={<DailyOffer addToBasket={addToBasket} />} />
           <Route path="/categories" element={<CategoryPage />} />
-          
+          <Route path="/error" element={<ErrorPage />} />
           <Route path="/transactions" element={<Transaction />} />
           <Route path="*" element={<Navigate to="/welcome" />} />
         </Routes>
