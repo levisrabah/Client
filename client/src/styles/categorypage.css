@@ -3,8 +3,9 @@
   justify-content: center;
   align-items: center;
   padding: 20px;
-  background: linear-gradient(to bottom, #eaeae9, #eaeae9, #e67b39d1, #ee612d);
+  background: linear-gradient(to bottom, #E86608, #bd5d19, #1d1008d1, #000000);
   min-height: 100vh;
+  
 }
 
 .category-cards {
