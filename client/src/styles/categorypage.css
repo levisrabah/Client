@@ -3,7 +3,7 @@
   justify-content: center;
   align-items: center;
   padding: 20px;
-  background: linear-gradient(to bottom, #E86608, #bd5d19, #1d1008d1, #000000);
+  background: linear-gradient(to bottom, rgba(244, 121, 45, 0.72), #bd5d19, #1d1008d1, #000000);
   min-height: 100vh;
   
 }
@@ -16,7 +16,7 @@
   gap: 320px;
   position: relative;
   top: 280px;
-  right: 230px;
+  right: 280px;
   width: 100%;
   max-width: 1200px;
 }

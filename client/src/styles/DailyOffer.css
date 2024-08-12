@@ -31,7 +31,7 @@
   border-radius: 8px;
   text-align: center;
   width: 250px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.739);
   transition: transform 0.3s ease;
 }
 
@@ -64,7 +64,7 @@
   font-size: 1.2em;
   margin-bottom: 10px;
   font-weight: bold;
-  color: #4CAF50;
+  color: #201912;
 }
 
 .edit-button,
@@ -79,25 +79,25 @@
 }
 
 .edit-button {
-  background-color: #4CAF50;
+  background-color: #201912;
   color: white;
 }
 
 .edit-button:hover {
-  background-color: #45a049;
+  background-color: #007095;
 }
 
 .delete-button {
-  background-color: #f44336;
+  background-color: #fa5d09;
   color: white;
 }
 
 .delete-button:hover {
-  background-color: #d32f2f;
+  background-color: #fa5d09df;
 }
 
 .order-button {
-  background-color: #008CBA;
+  background-color: #fa5d09;
   color: white;
 }
 
@@ -109,7 +109,7 @@
   padding: 10px 20px;
   border: none;
   border-radius: 5px;
-  background-color: #008CBA;
+  background-color: #fa5d09;
   color: white;
   cursor: pointer;
   margin-bottom: 20px;
