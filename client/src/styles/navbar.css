@@ -19,12 +19,15 @@
 }
 
 .blaze-navbar-logo {
+    display: flex;
     font-family: 'Nosifer', cursive;
     color: #E86608;
     font-size: 28px;
     font-weight: 700;
     text-decoration: none;
     transition: color 0.3s ease;
+    position: relative;
+    right: 430px;
 }
 
 .blaze-navbar-logo:hover {
@@ -44,6 +47,8 @@
     font-weight: 500;
     transition: color 0.3s ease;
     position: relative;
+    left: 400px;
+    top: 5px;
 }
 
 .blaze-navbar-links a::after {
@@ -116,6 +121,8 @@
     cursor: pointer;
     transition: background 0.3s ease;
     margin-left: 10px;
+    position: relative;
+    left: 400px;
 }
 
 .blaze-navbar-links button:hover {
