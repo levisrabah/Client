@@ -20,7 +20,7 @@ const Transaction = () => {
       const response = await fetch('http://127.0.0.1:5555/transactions', {
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${token}`  // Include the token in the headers
+          'Authorization': `Bearer ${token}`
         }
       });
 
@@ -42,8 +42,7 @@ const Transaction = () => {
   useEffect(() => {
     const role = localStorage.getItem('role');
     if (role !== 'admin') {
-      alert('Access denied. Admins only.');
-      navigate('/login');
+      navigate('/error'); // Redirect to error page
     } else {
       fetchTransactions();
     }
@@ -56,37 +55,47 @@ const Transaction = () => {
   };
 
   return (
-    <div>
+    <div className="blaze-transaction-page">
       <Navbar />
-      <div className="transaction-container">
-        <h1>Transaction History</h1>
-        <div className="transaction-summary">
-          <p><strong>Total Transactions:</strong> {transactions.length}</p>
-          <p><strong>Total Revenue:</strong> ${totalSum.toFixed(2)}</p>
-          <button onClick={generateTotalAmount}>Generate Total Amount</button>
+      <div className="blaze-transaction-container">
+        <h1 className="blaze-transaction-title">Transaction History</h1>
+        <div className="blaze-transaction-summary">
+          <div className="blaze-summary-item">
+            <h3>Total Transactions</h3>
+            <p>{transactions.length}</p>
+          </div>
+          <div className="blaze-summary-item">
+            <h3>Total Revenue</h3>
+            <p>${totalSum.toFixed(2)}</p>
+          </div>
+          <button className="blaze-generate-button" onClick={generateTotalAmount}>
+            Generate Total Amount
+          </button>
         </div>
-        <table className="transaction-table">
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>User Name</th>
-              <th>Date</th>
-              <th>Items</th>
-              <th>Total</th>
-            </tr>
-          </thead>
-          <tbody>
-            {transactions.map(transaction => (
-              <tr key={transaction.id}>
-                <td>{transaction.id}</td>
-                <td>{transaction.userName}</td>
-                <td>{transaction.date}</td>
-                <td>{transaction.items.join(', ')}</td>
-                <td>${transaction.total.toFixed(2)}</td>
+        <div className="blaze-transaction-table-container">
+          <table className="blaze-transaction-table">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>User Name</th>
+                <th>Date</th>
+                <th>Items</th>
+                <th>Total</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {transactions.map(transaction => (
+                <tr key={transaction.id}>
+                  <td>{transaction.id}</td>
+                  <td>{transaction.userName}</td>
+                  <td>{new Date(transaction.date).toLocaleDateString()}</td>
+                  <td>{transaction.items.join(', ')}</td>
+                  <td>${transaction.total.toFixed(2)}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   );
