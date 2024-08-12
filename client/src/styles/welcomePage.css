@@ -1,95 +1,168 @@
-/* Overall layout */
-.welcome-container {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+:root {
+  --blaze-primary-color: #E86608;
+  --blaze-bg-overlay: rgba(0, 0, 0, 0.5);
+  --blaze-text-color: #ffffff;
+  --blaze-footer-bg: #1a1a1a;
+}
+
+.blaze-welcome-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  font-family: 'Poppins', sans-serif;
+  line-height: 1.6;
+  color: var(--blaze-text-color);
+}
+
+.blaze-main {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+.blaze-welcome-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.blaze-welcome-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 5% 5%;
+  background-color: var(--blaze-bg-overlay);
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.blaze-welcome-content.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.blaze-welcome-title {
+  font-size: clamp(2rem, 5vw, 4rem);
+  font-weight: 700;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+
+.blaze-welcome-subtitle {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 300;
+  margin-bottom: 20px;
+}
+
+.blaze-welcome-description {
+  font-size: clamp(1rem, 2vw, 1.1rem);
+  line-height: 1.6;
+  max-width: 800px;
+  margin-bottom: 40px;
+}
+
+.blaze-browse-shop-button {
+  background-color: var(--blaze-primary-color);
+  color: var(--blaze-text-color);
+  font-size: clamp(0.9rem, 2vw, 1.1rem);
+  font-weight: 600;
+  padding: 15px 40px;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.blaze-browse-shop-button:hover {
+  background-color: #d45d07;
+  transform: scale(1.05);
+}
+
+.blaze-footer {
+  background-color: var(--blaze-footer-bg);
+  padding: 40px 20px;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.blaze-footer-section {
+  margin-bottom: 20px;
+  min-width: 200px;
+  flex: 1;
+}
+
+.blaze-footer-title {
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+.blaze-footer-link {
+  font-size: clamp(0.8rem, 1.5vw, 0.9rem);
+  margin-bottom: 8px;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.blaze-footer-link:hover {
+  color: var(--blaze-primary-color);
+}
+
+.blaze-social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.blaze-social-icons i {
+  font-size: clamp(1.2rem, 2.5vw, 1.5rem);
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.blaze-social-icons i:hover {
+  color: var(--blaze-primary-color);
+}
+
+@media (max-width: 768px) {
+  .blaze-welcome-content {
+    padding: 10% 5%;
   }
-  
-  .welcome-content {
-    flex: 1;
-    display: flex;
+
+  .blaze-footer {
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 20px;
-    position: relative;
-  }
-  
-  .welcome-title {
-    font-family: 'Nosifer Caps', sans-serif;
-    font-size: 60px;
-    color: #E86608;
-    margin-bottom: 20px;
-  }
-  
-  .welcome-subtitle {
-    font-family: 'Hurricane', cursive;
-    font-size: 40px;
-    color: #E86608;
-    margin-bottom: 20px;
-  }
-  
-  .welcome-description {
-    font-family: 'Ibarra Real Nova', serif;
-    font-size: 32px;
-    color: #E86608;
-    line-height: 40px;
-    margin-bottom: 40px;
-  }
-  
-  .browse-shop-button {
-    background: #E86608;
-    color: #FFFFFF;
-    font-family: 'Heebo', sans-serif;
-    display:block;
-    margin: 50px auto;
-    width: fit-content;
-    border: 1px solid #ff004f;
-    padding: 14px 50px;
-    border-radius: 6px;
-    text-decoration: none;
-    color: #fff;
-    background: transition 0.5s;
-  }
-  
-  .browse-shop-button:hover {
-    background-color: #d45d07;
-  }
-  
-  .footer {
-    background: linear-gradient(to bottom, #f0f0f0, #eba555, #eb884aea, #f79d36);
-    padding: 20px;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    color: #FFFFFF;
-    font-family: 'Nosifer', sans-serif;
-  }
-  
-  .footer-section {
     text-align: center;
   }
-  
-  .footer-title {
-    font-size: 15px;
-    margin-bottom: 10px;
-  }
-  
-  .footer-link {
-    font-size: 16px;
-    margin-bottom: 5px;
-  }
-  
-  .social-icons i {
-    font-size: 20px;
-    margin: 0 10px;
-  }
-  
-  /* Ensure the footer sticks to the bottom */
-  .footer {
-    margin-top: auto;
-    position: relative;
-    bottom: 0;
+
+  .blaze-footer-section {
+    margin-bottom: 30px;
     width: 100%;
   }
+}
+
+@media (max-width: 480px) {
+  .blaze-welcome-content {
+    padding: 15% 5%;
+  }
+
+  .blaze-browse-shop-button {
+    padding: 12px 30px;
+  }
+}
+
+@media (min-height: 800px) {
+  .blaze-footer {
+    margin-top: auto;
+  }
+}

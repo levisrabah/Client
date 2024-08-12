@@ -1,31 +1,25 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom'; 
+import { useNavigate } from 'react-router-dom';
 import '../styles/ErrorPage.css';
 
 const ErrorPage = () => {
   const navigate = useNavigate();
 
-
   const handleHomeClick = () => {
-    navigate('/'); // Navigate to the WelcomePage
+    navigate('/');
   };
 
   return (
-    <div className="errorPage">
-      <div className="errorContent">
-        <div className="errorCode">404</div>
-        <div className="errorMessage">
-          Page not found
-          <br />
-          The page you are looking for doesn't exist or another error occurred
-          <br />
-          Go back or click the button below to choose a new direction
-        </div>
-        <div className="homeButtonContainer">
-          <div className="homeButton" onClick={handleHomeClick}>
-            Home
-          </div>
-        </div>
+    <div className="error-page">
+      <div className="error-content">
+        <h1 className="error-code">404</h1>
+        <h2 className="error-title">Oops! Page not found</h2>
+        <p className="error-message">
+          The page you are looking for doesn't exist or another error occurred.
+        </p>
+        <button className="home-button" onClick={handleHomeClick}>
+          Back to Home
+        </button>
       </div>
     </div>
   );
