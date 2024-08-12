@@ -1,126 +1,67 @@
+
 .menu-page {
-    padding: 20px;
-    background-color: #f4f4f4;
-    border-radius: 10px;
-  }
-  
-  .menu-page h1 {
-    text-align: center;
-    color: #333;
-    font-size: 2.5em;
-    margin-bottom: 20px;
-  }
-  
-  .add-meal-button {
-    display: block;
-    margin: 20px auto;
-    padding: 10px 20px;
-    background-color: #FF8C00; /* Dark orange */
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .add-meal-button:hover {
-    background-color: #FF4500; /* OrangeRed */
-  }
-  
-  .meal-cards-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 20px;
-  }
-  
-  .meal-card {
-    background-color: white;
-    border-radius: 10px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    transition: transform 0.3s ease;
-    /* height: 500px; */
-  }
-  
-  .meal-card img {
-    width: 100%;
-    height: auto;
-    border-bottom: 2px solid #FF8C00; /* Dark orange */
-  }
-  
-  .meal-card-details {
-    padding: 15px;
-  }
-  
-  .meal-card-details h2 {
-    font-size: 1.5em;
-    color: #333;
-    margin-bottom: 10px;
-  }
-  
-  .meal-card-details p {
-    font-size: 1em;
-    color: #555;
-    margin-bottom: 15px;
-  }
-  
-  .meal-card .add-to-cart-button {
-    width: 100%;
-    padding: 10px;
-    border-radius: 0 0 10px 10px;
-    background-color: #FF8C00; /* Dark orange */
-    color: white;
-    text-align: center;
-    text-decoration: none;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .meal-card .add-to-cart-button:hover {
-    background-color: #FF4500; /* OrangeRed */
-  }
-  
-  .meal-card:hover {
-    transform: translateY(-5px);
-  }
-  
-  /* Admin form for adding a meal */
-  .add-meal-form {
-    background-color: white;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-    max-width: 400px;
-    margin: 20px auto;
-  }
-  
-  .add-meal-form label {
-    display: block;
-    margin-bottom: 10px;
-    font-weight: bold;
-  }
-  
-  .add-meal-form input,
-  .add-meal-form textarea {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    font-size: 1em;
-  }
-  
-  .add-meal-form button {
-    padding: 10px 20px;
-    background-color: #FF8C00; /* Dark orange */
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .add-meal-form button:hover {
-    background-color: #FF4500; /* OrangeRed */
-  }
-  
+  padding: 20px;
+  background-color: #333; /* Black background */
+  border-radius: 10px;
+}
+
+.menu-page h1 {
+  text-align: center;
+  color: #FF8C00; /* Dark orange text */
+  font-size: 2.5em;
+  margin-bottom: 20px;
+}
+
+.add-meal-button {
+  display: block;
+  margin: 20px auto;
+  padding: 10px 20px;
+  background-color: #FF8C00; /* Dark orange */
+  color: #000; /* Black text */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.add-meal-button:hover {
+  background-color: #FF4500; /* OrangeRed */
+}
+
+.meal-cards-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Smaller cards */
+  gap: 20px;
+}
+
+.meal-card img {
+  border-bottom: 2px solid #FF8C00; /* Dark orange */
+}
+
+.add-meal-form {
+  background-color: #333; /* Black background */
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  margin: 20px auto;
+}
+
+.add-meal-form label {
+  color: #FF8C00; /* Dark orange labels */
+}
+
+.add-meal-form input,
+.add-meal-form textarea {
+  background-color: #fff; /* White inputs */
+  color: #000; /* Black text */
+}
+
+.add-meal-form button {
+  background-color: #FF8C00; /* Dark orange */
+  color: #000; /* Black text */
+}
+
+.add-meal-form button:hover {
+  background-color: #FF4500; /* OrangeRed */
+}
