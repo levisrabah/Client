@@ -22,7 +22,6 @@ function Navbar() {
             <div className="blaze-navbar-container">
                 <Link to="/" className="blaze-navbar-logo">Blaze</Link>
                 <div className={`blaze-navbar-links ${isMenuOpen ? 'active' : ''}`}>
-                    <Link to="/Home">Home</Link>
                     <Link to="/login">Login</Link>
                     <Link to="/categories">Order</Link>
                     <Link to="/basket">Basket</Link>
