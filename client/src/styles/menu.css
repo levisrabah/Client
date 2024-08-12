@@ -1,8 +1,10 @@
 
 .menu-page {
   padding: 20px;
-  background-color: #333; /* Black background */
+  /* background-color: #333; Black background */
   border-radius: 10px;
+  background: linear-gradient(to top, #000000, #333333, #666666, #FF8C00);
+
 }
 
 .menu-page h1 {

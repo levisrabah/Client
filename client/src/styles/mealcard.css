@@ -6,7 +6,7 @@
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15); /* Darker shadow */
   overflow: hidden;
   text-align: center;
-  background-color: #fff;
+  background-color: #faa302;
   transition: all 0.3s ease;
   position: relative;
 }
