@@ -55,6 +55,7 @@ Welcome to Blaze, your go-to solution for seamless meal bookings and efficient r
 ## Project Structure
 
 ### Client side
+```
 ├──client
 |       ├──node_modules/
 |       ├──public/
@@ -94,8 +95,31 @@ Welcome to Blaze, your go-to solution for seamless meal bookings and efficient r
 |           ├──App.test.js
 |           ├──index.css
 |           ├──index.js
-├──
+├──node_modules
+├──package-lock.json
+├──package.json
+├──README.md
 
+```
+### Server side
+```
+├──Server
+|    ├──_pyache_
+|    ├──instance
+|        ├──app.db
+|    ├──migrations
+|    ├──testing
+|        ├──app_test.py
+|        ├──conftest.py
+|        ├──models_test.py
+|    ├──app.py
+|    ├──config.py
+|    ├──debug.py
+|    ├──models.py
+|    ├──pipfile
+|    ├──pipfile.lock
+|    ├──seed.py
+```
 ### Key Directories and Files
 
 - `client/`: Contains the React frontend application
