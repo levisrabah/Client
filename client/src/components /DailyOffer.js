@@ -142,8 +142,6 @@ const DailyOffer = ({ addToBasket }) => {
       <Navbar />
       <h1 className="main-title">Check out today's offers:</h1>
 
-      
-
       {role === 'admin' && (
         <>
           <button className="add-offer-button" onClick={() => setCreatingOffer(true)}>Add Offer</button>
@@ -251,7 +249,7 @@ const DailyOffer = ({ addToBasket }) => {
           </form>
         </div>
       )}
-    </div>
+      </div>
   );
 };
 

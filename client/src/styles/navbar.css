@@ -19,12 +19,14 @@
 }
 
 .blaze-navbar-logo {
-    font-family: 'Nosifier Caps', sans-serif;
+    font-family: 'Nosifer', cursive;
     color: #E86608;
     font-size: 28px;
     font-weight: 700;
     text-decoration: none;
     transition: color 0.3s ease;
+    position: relative;
+    right: 430px;
 }
 
 .blaze-navbar-logo:hover {
@@ -44,6 +46,8 @@
     font-weight: 500;
     transition: color 0.3s ease;
     position: relative;
+    left: 400px;
+    top: 5px;
 }
 
 .blaze-navbar-links a::after {
@@ -81,7 +85,26 @@
     transition: 0.4s;
 }
 
+@media screen and (max-width: 1024px) {
+    .blaze-navbar-logo {
+        right: 200px;
+    }
+
+    .blaze-navbar-links a {
+        left: 200px;
+    }
+
+    .blaze-navbar-links button {
+        left: 200px;
+    }
+}
+
 @media screen and (max-width: 768px) {
+    .blaze-navbar-logo {
+        position: static;
+        left: 0;
+    }
+
     .blaze-navbar-links {
         display: none;
         flex-direction: column;
@@ -92,6 +115,7 @@
         background-color: rgba(255, 255, 255, 0.95);
         padding: 20px 0;
         box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        align-items: center;
     }
 
     .blaze-navbar-links.active {
@@ -99,16 +123,24 @@
     }
 
     .blaze-navbar-links a {
-        padding: 10px 5%;
+        padding: 10px 0;
+        left: 0;
+        top: 0;
+        text-align: center;
     }
 
     .blaze-navbar-hamburger {
         display: flex;
     }
+
+    .blaze-navbar-links button {
+        left: 0;
+        text-align: center;
+    }
 }
 
 .blaze-navbar-links button {
-    background: #ff4b4b;
+    background: #E86608;
     border: none;
     color: white;
     padding: 8px 12px;
@@ -116,6 +148,8 @@
     cursor: pointer;
     transition: background 0.3s ease;
     margin-left: 10px;
+    position: relative;
+    left: 400px;
 }
 
 .blaze-navbar-links button:hover {

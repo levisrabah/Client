@@ -3,8 +3,9 @@
   justify-content: center;
   align-items: center;
   padding: 20px;
-  background: linear-gradient(to bottom, #eaeae9, #eaeae9, #e67b39d1, #ee612d);
+  background: linear-gradient(to bottom, rgba(244, 121, 45, 0.72), #bd5d19, #1d1008d1, #000000);
   min-height: 100vh;
+  
 }
 
 .category-cards {
@@ -12,10 +13,10 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  gap: 80px;
+  gap: 320px;
   position: relative;
   top: 280px;
-  right: 230px;
+  right: 280px;
   width: 100%;
   max-width: 1200px;
 }
