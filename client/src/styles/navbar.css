@@ -25,8 +25,6 @@
     font-weight: 700;
     text-decoration: none;
     transition: color 0.3s ease;
-    position: relative;
-    right: 430px;
 }
 
 .blaze-navbar-logo:hover {
@@ -36,6 +34,7 @@
 .blaze-navbar-links {
     display: flex;
     gap: 25px;
+    align-items: center;
 }
 
 .blaze-navbar-links a {
@@ -46,8 +45,6 @@
     font-weight: 500;
     transition: color 0.3s ease;
     position: relative;
-    left: 400px;
-    top: 5px;
 }
 
 .blaze-navbar-links a::after {
@@ -85,31 +82,26 @@
     transition: 0.4s;
 }
 
-@media screen and (max-width: 1024px) {
-    .blaze-navbar-logo {
-        right: 200px;
-    }
+.blaze-navbar-links button {
+    background: #E86608;
+    border: none;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
 
-    .blaze-navbar-links a {
-        left: 200px;
-    }
-
-    .blaze-navbar-links button {
-        left: 200px;
-    }
+.blaze-navbar-links button:hover {
+    background: #e60000;
 }
 
 @media screen and (max-width: 768px) {
-    .blaze-navbar-logo {
-        position: static;
-        left: 0;
-    }
-
     .blaze-navbar-links {
         display: none;
         flex-direction: column;
         position: absolute;
-        top: 60px;
+        top: 70px;
         left: 0;
         width: 100%;
         background-color: rgba(255, 255, 255, 0.95);
@@ -124,8 +116,6 @@
 
     .blaze-navbar-links a {
         padding: 10px 0;
-        left: 0;
-        top: 0;
         text-align: center;
     }
 
@@ -134,24 +124,6 @@
     }
 
     .blaze-navbar-links button {
-        left: 0;
         text-align: center;
     }
-}
-
-.blaze-navbar-links button {
-    background: #E86608;
-    border: none;
-    color: white;
-    padding: 8px 12px;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background 0.3s ease;
-    margin-left: 10px;
-    position: relative;
-    left: 400px;
-}
-
-.blaze-navbar-links button:hover {
-    background: #e60000;
 }
