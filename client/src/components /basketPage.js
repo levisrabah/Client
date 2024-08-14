@@ -7,6 +7,7 @@ const BasketPage = ({ basketItems = [], handleQuantityChange }) => {
   const [total, setTotal] = useState(0);
   const [showReceipt, setShowReceipt] = useState(false);
   const [userName, setUserName] = useState('');
+  const [phoneNumber, setPhoneNumber] = useState('');
   const [showNamePopup, setShowNamePopup] = useState(false);
   const navigate = useNavigate();
 
@@ -16,20 +17,21 @@ const BasketPage = ({ basketItems = [], handleQuantityChange }) => {
   }, [basketItems]);
 
   const handleConfirmOrder = async () => {
-    if (userName.trim() === '') {
+    if (userName.trim() === '' || phoneNumber.trim() === '') {
       setShowNamePopup(true);
       return;
     }
 
-    const newTransaction = {
-      userName: userName,
-      date: new Date().toISOString().split('T')[0],
-      items: basketItems.map(item => item.name),
-      total: total,
-    };
-
     try {
-      const response = await fetch('http://127.0.0.1:5555/transactions', {
+      // First, create the transaction
+      const newTransaction = {
+        userName: userName,
+        date: new Date().toISOString().split('T')[0],
+        items: basketItems.map(item => item.name),
+        total: total,
+      };
+
+      const transactionResponse = await fetch('http://127.0.0.1:5555/transactions', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -37,13 +39,33 @@ const BasketPage = ({ basketItems = [], handleQuantityChange }) => {
         body: JSON.stringify(newTransaction),
       });
 
-      if (response.ok) {
+      if (!transactionResponse.ok) {
+        throw new Error('Failed to add transaction');
+      }
+
+      // Then, initiate the M-Pesa payment
+      const paymentResponse = await fetch('http://127.0.0.1:5555/make_payment', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${localStorage.getItem('token')}`, // Assuming you store the JWT token in localStorage
+        },
+        body: JSON.stringify({
+          phone_number: phoneNumber,  // The phone number where the STK Push will be sent
+          amount: total,
+        }),
+      });
+
+      if (paymentResponse.ok) {
+        const paymentData = await paymentResponse.json();
+        console.log('Payment initiated:', paymentData);
         setShowReceipt(true);
       } else {
-        console.error('Failed to add transaction');
+        throw new Error('Failed to initiate payment');
       }
     } catch (error) {
-      console.error('Error adding transaction:', error);
+      console.error('Error processing order:', error);
+      alert('Failed to process order. Please try again.');
     }
   };
 
@@ -51,6 +73,7 @@ const BasketPage = ({ basketItems = [], handleQuantityChange }) => {
     <div className="receipt-popup">
       <h2>Order Receipt</h2>
       <p><strong>Customer Name:</strong> {userName}</p>
+      <p><strong>Phone Number:</strong> {phoneNumber}</p>
       <p><strong>Total Amount:</strong> ${total.toFixed(2)}</p>
       <h3>Ordered Items:</h3>
       <ul>
@@ -60,9 +83,10 @@ const BasketPage = ({ basketItems = [], handleQuantityChange }) => {
           </li>
         ))}
       </ul>
+      <p>A payment request has been sent to your phone. Please complete the M-Pesa payment.</p>
       <button onClick={() => {
         setShowReceipt(false);
-        navigate('/order'); // Replace with the desired route
+        navigate('/order'); 
       }}>Ok</button>
     </div>
   );
@@ -70,12 +94,18 @@ const BasketPage = ({ basketItems = [], handleQuantityChange }) => {
   const NamePopup = () => (
     <div className="name-popup-overlay">
       <div className="name-popup">
-        <h3>Please Enter Your Name</h3>
+        <h3>Please Enter Your Details</h3>
         <input 
           type="text" 
           value={userName} 
           onChange={(e) => setUserName(e.target.value)} 
           placeholder="Your Name" 
+        />
+        <input 
+          type="tel" 
+          value={phoneNumber} 
+          onChange={(e) => setPhoneNumber(e.target.value)} 
+          placeholder="Your Phone Number" 
         />
         <button onClick={() => setShowNamePopup(false)}>Close</button>
       </div>
@@ -117,7 +147,13 @@ const BasketPage = ({ basketItems = [], handleQuantityChange }) => {
                 value={userName}
                 onChange={(e) => setUserName(e.target.value)}
               />
-              <button onClick={handleConfirmOrder}>Confirm Order</button>
+              <input 
+                type="tel" 
+                placeholder="Enter your phone number" 
+                value={phoneNumber}
+                onChange={(e) => setPhoneNumber(e.target.value)}
+              />
+              <button onClick={handleConfirmOrder}>Confirm Order and Pay</button>
             </div>
           </>
         ) : (

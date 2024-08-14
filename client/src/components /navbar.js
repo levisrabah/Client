@@ -8,13 +8,8 @@ function Navbar() {
     const navigate = useNavigate();
 
     useEffect(() => {
-        // Check if the user is logged in by verifying if a token exists
         const token = localStorage.getItem('token');
-        if (token) {
-            setIsLoggedIn(true);
-        } else {
-            setIsLoggedIn(false);
-        }
+        setIsLoggedIn(!!token);
     }, []);
 
     const toggleMenu = () => {
@@ -22,11 +17,10 @@ function Navbar() {
     };
 
     const handleLogout = () => {
-        // Remove the token from localStorage
         localStorage.removeItem('token');
-        localStorage.removeItem('role'); // Optionally, remove the role
-        setIsLoggedIn(false); // Update the logged-in state
-        navigate('/login'); // Redirect to login page
+        localStorage.removeItem('role');
+        setIsLoggedIn(false);
+        navigate('/login');
     };
 
     return (
@@ -35,14 +29,14 @@ function Navbar() {
                 <Link to="/" className="blaze-navbar-logo">Blaze</Link>
                 <div className={`blaze-navbar-links ${isMenuOpen ? 'active' : ''}`}>
                     {!isLoggedIn && (
-                        <Link to="/login">Login</Link>
+                        <Link to="/login" onClick={toggleMenu}>Login</Link>
                     )}
-                    <Link to="/categories">Order</Link>
-                    <Link to="/basket">Basket</Link>
-                    <Link to="/offers">Offers</Link>
-                    <Link to="/transactions">Transactions</Link>
+                    <Link to="/categories" onClick={toggleMenu}>Order</Link>
+                    <Link to="/basket" onClick={toggleMenu}>Basket</Link>
+                    <Link to="/offers" onClick={toggleMenu}>Offers</Link>
+                    <Link to="/transactions" onClick={toggleMenu}>Transactions</Link>
                     {isLoggedIn && (
-                        <button className="blaze-logout-button" onClick={handleLogout}>
+                        <button className="blaze-logout-button" onClick={() => { handleLogout(); toggleMenu(); }}>
                             Logout
                         </button>
                     )}
