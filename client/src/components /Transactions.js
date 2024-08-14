@@ -50,9 +50,7 @@ const Transaction = () => {
 
   const totalSum = transactions.reduce((sum, transaction) => sum + transaction.total, 0);
 
-  const generateTotalAmount = () => {
-    alert(`Total amount generated: $${totalSum.toFixed(2)}`);
-  };
+ 
 
   return (
     <div className="blaze-transaction-page">
@@ -68,9 +66,8 @@ const Transaction = () => {
             <h3>Total Revenue</h3>
             <p>${totalSum.toFixed(2)}</p>
           </div>
-          <button className="blaze-generate-button" onClick={generateTotalAmount}>
-            Generate Total Amount
-          </button>
+          
+          
         </div>
         <div className="blaze-transaction-table-container">
           <table className="blaze-transaction-table">
