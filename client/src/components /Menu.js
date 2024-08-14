@@ -95,7 +95,7 @@ function Menu() {
   };
 
   return (
-    <div>
+    <div className="menu-page">
       <Navbar />
       <h1>Menu</h1>
       {role === 'admin' && (

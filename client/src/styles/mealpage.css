@@ -1,10 +1,12 @@
 .meal-page {
   display: flex;
   align-items: flex-start;
-  padding: 40px;
-  background-color: #FFF8E1;
-  min-height: calc(100vh - 80px);
+  justify-content: center;
+  padding: 50px;
+  background: linear-gradient(to bottom, #E86608, #bd5d19, #1d1008d1, #000000);
+  min-height: 100vh;
   font-family: 'Arial', sans-serif;
+  padding-top: 250px;
 }
 
 .meal-image {
@@ -12,31 +14,30 @@
   height: 400px;
   object-fit: cover;
   border-radius: 15px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
   margin-right: 40px;
 }
 
 .meal-details {
   max-width: 600px;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  background-color: white;
+  background-color: #fff;
   padding: 30px;
   border-radius: 15px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
 }
 
 .meal-details h1 {
-  margin-top: 0;
+  margin: 0;
   color: #FF6F00;
-  font-size: 2.5em;
+  font-size: 2.8em;
   margin-bottom: 20px;
+  font-weight: bold;
 }
 
 .meal-details p {
   margin: 15px 0;
-  font-size: 1.1em;
+  font-size: 1.2em;
+  color: #333;
   line-height: 1.6;
 }
 
@@ -58,52 +59,66 @@
 }
 
 .add-to-cart-button {
-  margin-top: auto; /* Pushes the button to the bottom */
-  padding: 10px 20px;
+  padding: 12px 24px;
   background-color: #FF6F00;
   color: #fff;
-  text-decoration: none;
   border: none;
-  border-radius: 5px;
+  border-radius: 30px;
   cursor: pointer;
-  align-self: flex-start; /* Align the button to the left */
-  transition: background-color 0.3s ease;
+  align-self: flex-start;
+  font-size: 1.1em;
+  font-weight: bold;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .add-to-cart-button:hover {
   background-color: #E65100;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
 }
 
 .edit-delete-buttons {
-  position: absolute;
-  bottom: 10px;
-  right: 10px;
+  margin-top: 30px;
   display: flex;
-  gap: 15px;
+  gap: 20px;
 }
 
 .edit-delete-buttons button {
-  padding: 5px 10px;
-  border-radius: 5px;
+  padding: 10px 20px;
+  border-radius: 30px;
+  font-size: 1em;
+  font-weight: bold;
   cursor: pointer;
+  transition: box-shadow 0.3s ease;
 }
 
 .edit-delete-buttons button.edit {
-  background-color: #007bff;
+  background-color: #ffae00;
   color: #fff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.edit-delete-buttons button.edit:hover {
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
 }
 
 .edit-delete-buttons button.delete {
   background-color: #dc3545;
   color: #fff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
 }
+
+.edit-delete-buttons button.delete:hover {
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
+}
+
 .popup {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.7);
+  background: rgba(0, 0, 0, 0.8);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -113,62 +128,69 @@
 .popup-content {
   background: white;
   padding: 40px;
-  border-radius: 15px;
+  border-radius: 20px;
   text-align: center;
   max-width: 400px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
 }
 
 .popup-content h2 {
   color: #FF6F00;
   margin-bottom: 20px;
+  font-size: 1.8em;
 }
 
 .popup-content p {
   margin: 10px 0;
-  font-size: 1.1em;
+  font-size: 1.2em;
+  color: #333;
 }
 
 .popup-content h3 {
   margin-top: 20px;
   color: #4CAF50;
+  font-size: 1.5em;
 }
 
 .popup-content button {
   margin-top: 20px;
-  padding: 10px 20px;
+  padding: 12px 24px;
   background-color: #FF6F00;
   color: white;
   border: none;
-  border-radius: 50px;
+  border-radius: 30px;
   cursor: pointer;
-  font-size: 1em;
-  transition: background-color 0.3s ease;
+  font-size: 1.1em;
+  font-weight: bold;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .popup-content button:hover {
   background-color: #E65100;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
 }
 
 /* Styles for the edit form */
 form input, form textarea {
-  padding: 10px;
+  padding: 12px;
   border: 1px solid #ddd;
-  border-radius: 5px;
-  font-size: 1em;
+  border-radius: 10px;
+  font-size: 1.1em;
+  margin-bottom: 20px;
+  width: 100%;
 }
 
 form textarea {
-  min-height: 100px;
+  min-height: 120px;
 }
 
 form button {
-  padding: 10px 20px;
-  border: none;
-  border-radius: 50px;
+  padding: 12px 24px;
+  border-radius: 30px;
   cursor: pointer;
-  font-size: 1em;
+  font-size: 1.1em;
   transition: background-color 0.3s ease;
+  margin-right: 10px;
 }
 
 form button[type="submit"] {

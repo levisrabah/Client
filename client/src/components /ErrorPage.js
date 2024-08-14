@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../styles/ErrorPage.css';
-
+import Navbar from './navbar';
 const ErrorPage = () => {
   const navigate = useNavigate();
 
@@ -11,6 +11,7 @@ const ErrorPage = () => {
 
   return (
     <div className="error-page">
+      <Navbar />
       <div className="error-content">
         <h1 className="error-code">404</h1>
         <h2 className="error-title">Oops! Page not found</h2>
