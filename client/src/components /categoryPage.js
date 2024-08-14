@@ -1,17 +1,26 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Navbar from './navbar';
 import '../styles/categorypage.css';
 
 const CategoryPage = () => {
   const [categories, setCategories] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
-    fetch('http://localhost:5555/categories')
-      .then(response => response.json())
-      .then(data => setCategories(data))
-      .catch(error => console.error('Error fetching categories:', error));
-  }, []);
+    // Check if the user is logged in by verifying if a token exists
+    const token = localStorage.getItem('token');
+    if (!token) {
+      // If not logged in, redirect to the login page
+      navigate('/login');
+    } else {
+      // If logged in, fetch categories
+      fetch('http://localhost:5555/categories')
+        .then(response => response.json())
+        .then(data => setCategories(data))
+        .catch(error => console.error('Error fetching categories:', error));
+    }
+  }, [navigate]);
 
   return (
     <>
