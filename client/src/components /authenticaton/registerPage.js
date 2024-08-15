@@ -27,12 +27,13 @@ const RegisterPage = () => {
         password,
         role,
       });
-
       navigate('/login'); // Navigate to login page after successful registration
     } catch (err) {
+      console.error(err); // Log the error for debugging
       setError('Registration failed');
     }
   };
+  
 
   return (
    <>
