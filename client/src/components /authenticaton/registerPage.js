@@ -3,6 +3,11 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './registerPage.css';
 import Navbar from '../navbar';
+import { Carousel } from 'react-responsive-carousel';
+import 'react-responsive-carousel/lib/styles/carousel.min.css';
+import imagesG from './pics/berry.jpeg';
+import imagesU from './pics/chick.jpeg';
+import imagesA from './pics/picture.jpeg';
 
 const RegisterPage = () => {
   const [username, setUsername] = useState('');
@@ -22,24 +27,34 @@ const RegisterPage = () => {
         password,
         role,
       });
-
       navigate('/login'); // Navigate to login page after successful registration
     } catch (err) {
+      console.error(err); // Log the error for debugging
       setError('Registration failed');
     }
   };
+  
 
   return (
    <>
    <Navbar />
     <div className="register-container">
-      <div className="register-image">
-        <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxleHBsb3JlLWZlZWR8MXx8fGVufDB8fHx8fA%3D%3D" alt="Pizza" />
-        <div className="image-text">
-          Best Blaze meal, Try It!
-        </div>
+      <div className="register-carousel">
+        <Carousel
+        autoPlay
+        infiniteLoop
+        showThumbs={false}
+        showStatus={false}
+        showArrows={false}
+        interval={3000}
+        transitionTime={600}
+      >
+        <img src={imagesG} alt="image1" />
+        <img src={imagesA} alt="image2" />
+        <img src={imagesU} alt="image3" />
+        </Carousel>
       </div>
-      <div className="register-form">
+      <div className="register-form-card">
         <h2>Register</h2>
         {error && <p style={{ color: 'red' }}>{error}</p>}
         <form onSubmit={handleRegister}>

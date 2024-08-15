@@ -1,19 +1,31 @@
+/* Importing the Poppins font to ensure consistency */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+:root {
+  --meal-card-bg: #1c1c1c; /* Dark background similar to the transaction page */
+  --meal-card-text-color: #ffffff; /* Consistent text color */
+  --meal-card-accent-color: #E86608; /* Primary color for accents */
+  --meal-card-shadow: rgba(0, 0, 0, 0.3); /* Darker shadow for cards */
+}
+
 .meal-card {
   display: inline-block;
-  width: calc(25% - 20px); /* Reduced width */
+  width: calc(25% - 20px); /* Adjusted width to make cards smaller */
   margin: 10px;
-  border-radius: 10px; /* Slightly sharper corners */
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15); /* Darker shadow */
+  border-radius: 15px;
+  box-shadow: 0 10px 20px var(--meal-card-shadow);
   overflow: hidden;
   text-align: center;
-  background-color: #faa302;
+  background-color: var(--meal-card-bg);
+  color: var(--meal-card-text-color);
   transition: all 0.3s ease;
   position: relative;
+  font-family: 'Poppins', sans-serif; /* Consistent font */
 }
 
 .meal-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.25); /* Darker shadow on hover */
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px var(--meal-card-shadow);
 }
 
 .meal-card-image {
@@ -30,51 +42,58 @@
   height: 100%;
   object-fit: cover;
   transition: transform 0.3s ease;
+  border-bottom: 3px solid var(--meal-card-accent-color); /* Accent color border */
 }
 
 .meal-card:hover .meal-card-image img {
-  transform: scale(1.05); /* Slightly less zoom on hover */
+  transform: scale(1.1);
 }
 
 .meal-card-details {
-  padding: 15px;
+  padding: 20px;
 }
 
 .meal-card-details h3 {
   margin: 0 0 10px;
-  font-size: 1.3em;
-  color: #333;
+  font-size: 1.2em; /* Slightly smaller font size for consistency */
+  color: var(--meal-card-accent-color); /* Accent color for headings */
 }
 
 .meal-card-details p {
-  color: #666;
-  font-size: 1em;
+  color: #CCCCCC; /* Light grey text for descriptions */
+  font-size: 1em; /* Slightly smaller font size for consistency */
   margin-bottom: 15px;
 }
 
 .meal-card-details a {
   display: inline-block;
   padding: 10px 20px;
-  background-color: #FF8C00; /* Dark orange */
-  color: #000; /* Black text */
+  background-color: var(--meal-card-accent-color);
+  color: var(--meal-card-text-color);
   text-decoration: none;
-  border-radius: 50px;
+  border-radius: 30px; /* Rounded button */
   font-weight: bold;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 .meal-card-details a:hover {
-  background-color: #FF4500; /* OrangeRed */
+  background-color: #d45d07; /* Slightly darker shade on hover */
 }
 
 @media (max-width: 1200px) {
   .meal-card {
-    width: calc(33.333% - 20px); /* Adjusted for medium screens */
+    width: calc(33.333% - 20px); /* Adjusted width for medium screens */
   }
 }
 
 @media (max-width: 768px) {
   .meal-card {
-    width: calc(50% - 20px); /* Adjusted for smaller screens */
+    width: calc(50% - 20px); /* Adjusted width for small screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .meal-card {
+    width: calc(100% - 20px); /* Full width for extra small screens */
   }
 }

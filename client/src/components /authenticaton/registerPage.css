@@ -2,76 +2,76 @@
   display: flex;
   flex-direction: row;
   height: 100vh;
-  background: linear-gradient(to bottom, #eaeae9, #eaeae9, #e67b39d1, #ee612d);
+  background: linear-gradient(to bottom, #db8420, #dd901b, #414040d1, #131313);
+  overflow: hidden;
+  align-items: center; /* Center items vertically */
+  justify-content: center; /* Center items horizontally */
 }
 
-.register-image {
-  flex: 2;
+.register-carousel {
+  flex: 1;
   display: flex;
-  align-items: center;
   justify-content: center;
-  position: relative;
-  padding: 20px; /* Adjusted padding */
+  align-items: center;
+  padding: 20px;
+  overflow: hidden; /* Ensure content does not overflow */
 }
 
-.register-image img {
-  width: 100%;
-  height: auto;
-  border-radius: 15px;
+.register-carousel img {
+  max-width: 100%;
+  max-height: 90vh; /* Limit the height to avoid overflow */
+  object-fit: cover; /* Maintain aspect ratio without distortion */
 }
 
-.image-text {
-  position: absolute;
-  bottom: 10px;
-  right: 10px;
-  background-color: rgba(255, 255, 255, 0.7);
-  padding: 10px 20px;
-  border-radius: 10px;
-  font-family: 'Mohave', sans-serif;
-  font-size: 18px; /* Reduced font size */
-  font-weight: bold;
-  color: #333;
-  text-align: center;
-}
-
-.register-form {
+.register-form-card {
   flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 20px; /* Adjusted padding */
+  padding: 40px;
+  background-color: rgb(10, 10, 10);
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin: 0 20px; /* Space on both sides to ensure even positioning */
+  max-width: 500px;
 }
 
 h2 {
   text-align: center;
   font-family: 'Mohave', sans-serif;
   font-weight: 600;
-  font-size: 24px; /* Reduced font size */
-  color: #333;
+  font-size: 24px;
+  color: #ffffff;
 }
 
 .input-group {
-  margin-bottom: 15px; /* Reduced margin for smaller spacing */
+  margin-bottom: 15px;
+  color: #ffffff;
 }
 
-input,
+input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 4px;
+}
+
 select {
   width: 100%;
   padding: 10px;
-  border: none;
-  border-bottom: 1px solid #ccc;
+  border: 1px solid #ffffff;
+  border-radius: 4px;
   font-size: 16px;
   font-family: 'Mohave', sans-serif;
 }
 
 .register-button {
   width: 100%;
-  padding: 12px; /* Adjusted padding */
+  padding: 12px;
   margin-top: 10px;
-  background-color: #FF8C00;
+  background-color: #e78b11;
   border: none;
   border-radius: 20px;
-  color: white;
+  color: rgb(255, 255, 255);
   font-size: 16px;
   font-family: 'Mohave', sans-serif;
   font-weight: 600;
@@ -80,16 +80,31 @@ select {
 
 @media (max-width: 768px) {
   .register-container {
-    flex-direction: column; /* Stack the image and form on smaller screens */
+    flex-direction: column;
+    align-items: center; /* Center items in column layout */
   }
 
-  .register-image {
-    flex: 1;
+  .register-carousel {
     padding: 10px;
+    margin-bottom: 20px;
   }
 
-  .register-form {
-    flex: 1;
-    padding: 20px;
+  .register-form-card {
+    margin: 0 10px;
+    position: static; /* Reset positioning for smaller screens */
   }
+}
+.auth-links {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.auth-link {
+  color: #e78b11;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.auth-link:hover {
+  text-decoration: underline;
 }
