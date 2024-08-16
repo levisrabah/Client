@@ -9,14 +9,24 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 const WelcomePage = () => {
   const navigate = useNavigate();
   const [isVisible, setIsVisible] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   useEffect(() => {
     setIsVisible(true);
   }, []);
 
+  useEffect(() => {
+    // Check if the user is logged in by verifying if a token exists
+    const token = localStorage.getItem('token');
+    if (token) {
+      setIsLoggedIn(true);
+    } else {
+      setIsLoggedIn(false);
+    }
+  }, []);
+
   const handleBrowseShop = () => {
-    const isLoggedIn = false; 
-    navigate(isLoggedIn ? '/category' : '/register');
+    navigate(isLoggedIn ? '/categories' : '/register');
   };
 
   return (
@@ -40,16 +50,10 @@ const WelcomePage = () => {
         </button>
       </div>
       <footer className="blaze-footer">
-        {/* <div className="blaze-footer-section">
-          <h3 className="blaze-footer-title">Join Us</h3>
-          <p className="blaze-footer-link">Become an Admin</p>
-          <p className="blaze-footer-link">Become a User</p>
-        </div> */}
         <div className="blaze-footer-section">
           <h3 className="blaze-footer-title">Blaze</h3>
           <p className="blaze-footer-link">314-00100 Diddly Squat</p>
-          <p className="blaze-footer-link">copyright @2024</p>
-          
+          <p className="blaze-footer-link">Copyright @2024</p>
         </div>
         <div className="blaze-footer-section">
           <h3 className="blaze-footer-title">Legal</h3>
@@ -70,7 +74,7 @@ const WelcomePage = () => {
               <i className="fab fa-facebook"></i> Facebook: Blaze
             </li>
             <li className="contact-item">
-              <i className="fab fa-email"></i> Email: Blaze
+              <i className="fas fa-envelope"></i> Email: Blaze
             </li>
           </ul>
         </div>
