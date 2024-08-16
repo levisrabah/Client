@@ -37,7 +37,7 @@ function Navbar() {
                     {!isLoggedIn && (
                         <Link to="/login">Login</Link>
                     )}
-                    <Link to="/categories">Order</Link>
+                    <Link to="/categories">Categories</Link>
                     <Link to="/basket">Basket</Link>
                     <Link to="/offers">Offers</Link>
                     <Link to="/transactions">Transactions</Link>

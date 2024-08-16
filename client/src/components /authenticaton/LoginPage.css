@@ -1,26 +1,109 @@
-.login-container {
+/* Base styling for both register and login pages */
+.container {
   display: flex;
   flex-direction: row;
   height: 100vh;
+  overflow: hidden;
+  align-items: center;
+  justify-content: center;
+}
+.login-carousel {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  overflow: hidden; /* Ensure content does not overflow */
+}
+
+.login-carousel img {
+  max-width: 100%;
+  max-height: 90vh; /* Limit the height to avoid overflow */
+  object-fit: cover; /* Maintain aspect ratio without distortion */
+}
+
+.container .form-card {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 40px;
+  background-color: #1a1a1a;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin: 0 20px;
+  max-width: 500px;
+}
+
+.container h2 {
+  text-align: center;
+  font-family: 'Mohave', sans-serif;
+  font-weight: 600;
+  font-size: 24px;
+  color: #ffffff;
+}
+
+.container .input-group {
+  margin-bottom: 15px;
+}
+
+.container input,
+.container select {
+  width: 100%;
+  padding: 10px;
+  border-radius: 4px;
+  font-size: 16px;
+  font-family: 'Mohave', sans-serif;
+}
+
+.container .button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 10px;
+  border: none;
+  border-radius: 20px;
+  font-size: 16px;
+  font-family: 'Mohave', sans-serif;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.auth-links {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.auth-link {
+  color: #e78b11;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.auth-link:hover {
+  text-decoration: underline;
+}
+
+/* Specific styles for login page */
+.login-container {
   background: linear-gradient(to bottom, #eaeae9, #eaeae9, #e67b39d1, #ee612d);
 }
 
-.login-image {
+.login-container .login-image {
   flex: 2;
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
-  padding: 20px; /* Adjusted padding */
+  padding: 20px;
 }
 
-.login-image img {
+.login-container .login-image img {
   width: 100%;
   height: auto;
   border-radius: 15px;
 }
 
-.image-text {
+.login-container .image-text {
   position: absolute;
   bottom: 10px;
   right: 10px;
@@ -28,70 +111,37 @@
   padding: 10px 20px;
   border-radius: 10px;
   font-family: 'Mohave', sans-serif;
-  font-size: 18px; /* Reduced font size for smaller screens */
+  font-size: 18px;
   font-weight: 600;
   color: white;
   text-align: center;
 }
 
-.login-form {
+.login-container .login-form {
   flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 20px; /* Adjusted padding */
 }
 
-h2 {
-  text-align: center;
-  font-family: 'Mohave', sans-serif;
-  font-weight: 600;
-  font-size: 24px; /* Reduced font size */
-  color: #333;
-}
-
-.input-group {
-  margin-bottom: 15px; /* Reduced margin for smaller spacing */
-}
-
-input {
-  width: 100%;
-  padding: 10px;
-  border: none;
-  border-bottom: 1px solid grey;
-  font-size: 16px;
-  font-family: 'Mohave', sans-serif;
-  text-align: center;
-  color: grey;
-}
-
-.login-button,
-.register-button {
-  width: 100%;
-  padding: 12px; /* Adjusted padding */
-  margin-top: 10px;
+/* Specific button styles for login and register */
+.login-button {
   background-color: #FF8C00;
-  border: none;
-  border-radius: 20px;
   color: white;
-  font-size: 16px;
-  font-family: 'Mohave', sans-serif;
-  font-weight: 600;
-  cursor: pointer;
+}
+
+.register-button {
+  background-color: #e78b11;
+  color: white;
 }
 
 @media (max-width: 768px) {
-  .login-container {
-    flex-direction: column; /* Stack the image and form on smaller screens */
+  .container {
+    flex-direction: column;
   }
 
-  .login-image {
-    flex: 1;
+  .login-container .login-image {
     padding: 10px;
   }
 
-  .login-form {
-    flex: 1;
-    padding: 20px;
+  .container .form-card {
+    margin: 0 10px;
   }
 }
