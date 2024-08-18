@@ -16,6 +16,7 @@ function Menu() {
   });
   const [role, setRole] = useState('');
   const [token, setToken] = useState('');
+  const [errors, setErrors] = useState({});
 
   // Fetch meals and user role/token on component mount
   useEffect(() => {
@@ -45,6 +46,39 @@ function Menu() {
     }
   };
 
+  // Validate form inputs
+  const validateForm = () => {
+    const newErrors = {};
+
+    if (!mealForm.name) {
+      newErrors.name = 'Name is required';
+    } else if (mealForm.name.length < 3) {
+      newErrors.name = 'Name must be at least 3 letters long';
+    }
+
+    if (!mealForm.description) {
+      newErrors.description = 'Description is required';
+    } else {
+      const wordCount = mealForm.description.trim().split(/\s+/).length;
+      if (wordCount < 10) {
+        newErrors.description = 'Description must be at least 10 words long';
+      }
+    }
+
+    if (!mealForm.price) {
+      newErrors.price = 'Price is required';
+    } else if (isNaN(mealForm.price) || mealForm.price <= 0) {
+      newErrors.price = 'Price must be a positive number';
+    }
+
+    if (mealForm.image && !mealForm.image.match(/^https?:\/\/.+/)) {
+      newErrors.image = 'Image URL must be a valid URL starting with http:// or https://';
+    }
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
   // Handle form input changes
   const handleFormChange = (e) => {
     setMealForm({
@@ -56,6 +90,11 @@ function Menu() {
   // Handle form submission to add a new meal
   const handleFormSubmit = async (e) => {
     e.preventDefault();
+
+    if (!validateForm()) {
+      return;
+    }
+
     try {
       const newMeal = {
         ...mealForm,
@@ -78,9 +117,9 @@ function Menu() {
           price: '',
           image: ''
         });
+        setErrors({});
         fetchMeals(); // Refresh meals after adding a new one
       } else {
-        // Attempt to parse response as JSON
         const errorText = await response.text();
         try {
           const errorData = JSON.parse(errorText);
@@ -115,6 +154,7 @@ function Menu() {
                     onChange={handleFormChange}
                     required
                   />
+                  {errors.name && <span className="error-text">{errors.name}</span>}
                 </label>
                 <label>
                   Description:
@@ -125,6 +165,7 @@ function Menu() {
                     onChange={handleFormChange}
                     required
                   />
+                  {errors.description && <span className="error-text">{errors.description}</span>}
                 </label>
                 <label>
                   Price:
@@ -135,6 +176,7 @@ function Menu() {
                     onChange={handleFormChange}
                     required
                   />
+                  {errors.price && <span className="error-text">{errors.price}</span>}
                 </label>
                 <label>
                   Image URL:
@@ -144,6 +186,7 @@ function Menu() {
                     value={mealForm.image}
                     onChange={handleFormChange}
                   />
+                  {errors.image && <span className="error-text">{errors.image}</span>}
                 </label>
                 <button type="submit">Add Meal</button>
                 <button type="button" onClick={() => setCreatingMeal(false)}>Cancel</button>

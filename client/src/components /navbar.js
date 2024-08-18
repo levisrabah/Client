@@ -5,15 +5,19 @@ import '../styles/navbar.css';
 function Navbar() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const [userRole, setUserRole] = useState(null);
     const navigate = useNavigate();
 
     useEffect(() => {
         // Check if the user is logged in by verifying if a token exists
         const token = localStorage.getItem('token');
+        const role = localStorage.getItem('role'); // Get the user's role from localStorage
         if (token) {
             setIsLoggedIn(true);
+            setUserRole(role);
         } else {
             setIsLoggedIn(false);
+            setUserRole(null);
         }
     }, []);
 
@@ -22,10 +26,11 @@ function Navbar() {
     };
 
     const handleLogout = () => {
-        // Remove the token from localStorage
+        // Remove the token and role from localStorage
         localStorage.removeItem('token');
-        localStorage.removeItem('role'); // Optionally, remove the role
+        localStorage.removeItem('role');
         setIsLoggedIn(false); // Update the logged-in state
+        setUserRole(null); // Reset the user role
         navigate('/login'); // Redirect to login page
     };
 
@@ -40,7 +45,10 @@ function Navbar() {
                     <Link to="/categories">Categories</Link>
                     <Link to="/basket">Basket</Link>
                     <Link to="/offers">Offers</Link>
-                    <Link to="/transactions">Transactions</Link>
+                    {/* Conditionally render the Transactions link based on the user's role */}
+                    {userRole === 'admin' && (
+                        <Link to="/transactions">Transactions</Link>
+                    )}
                     {isLoggedIn && (
                         <button className="blaze-logout-button" onClick={handleLogout}>
                             Logout
