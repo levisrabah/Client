@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
 
 :root {
-  --meal-card-bg: #1c1c1c; /* Dark background similar to the transaction page */
+  --meal-card-bg: #ffffff; /* Dark background similar to the transaction page */
   --meal-card-text-color: #ffffff; /* Consistent text color */
   --meal-card-accent-color: #E86608; /* Primary color for accents */
   --meal-card-shadow: rgba(0, 0, 0, 0.3); /* Darker shadow for cards */
@@ -10,10 +10,10 @@
 
 .meal-card {
   display: inline-block;
-  width: calc(25% - 20px); /* Adjusted width to make cards smaller */
-  margin: 10px;
-  border-radius: 15px;
-  box-shadow: 0 10px 20px var(--meal-card-shadow);
+  width: calc(20% - 15px); /* Reduced width to make cards smaller */
+  margin: 7px; /* Adjusted margin for a tighter fit */
+  border-radius: 10px; /* Slightly reduced border radius */
+  box-shadow: 0 8px 16px var(--meal-card-shadow); /* Reduced shadow size */
   overflow: hidden;
   text-align: center;
   background-color: var(--meal-card-bg);
@@ -21,6 +21,7 @@
   transition: all 0.3s ease;
   position: relative;
   font-family: 'Poppins', sans-serif; /* Consistent font */
+  padding: 10px; /* Added padding to ensure content fits well */
 }
 
 .meal-card:hover {
@@ -31,7 +32,7 @@
 .meal-card-image {
   position: relative;
   overflow: hidden;
-  padding-top: 75%; /* 4:3 Aspect Ratio */
+  padding-top: 55%; /* 4:3 Aspect Ratio */
 }
 
 .meal-card-image img {
@@ -60,7 +61,7 @@
 }
 
 .meal-card-details p {
-  color: #CCCCCC; /* Light grey text for descriptions */
+  color: #1a1a1a; /* Light grey text for descriptions */
   font-size: 1em; /* Slightly smaller font size for consistency */
   margin-bottom: 15px;
 }
@@ -68,7 +69,7 @@
 .meal-card-details a {
   display: inline-block;
   padding: 10px 20px;
-  background-color: var(--meal-card-accent-color);
+  background-color: #d45d07;
   color: var(--meal-card-text-color);
   text-decoration: none;
   border-radius: 30px; /* Rounded button */
