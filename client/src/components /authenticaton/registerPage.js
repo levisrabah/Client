@@ -20,7 +20,7 @@ const RegisterPage = () => {
   const handleRegister = async (e) => {
     e.preventDefault();
     try {
-      const url = role === 'admin' ? 'https://blaze-server-1xqz.onrender.com/admins' : 'http://127.0.0.1:5555/register';
+      const url = role === 'admin' ? 'https://blaze-server-1xqz.onrender.com/admins' : 'https://blaze-server-1xqz.onrender.com/register';
       await axios.post(url, {
         username,
         email,

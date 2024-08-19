@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './LoginPage.css';
-import Navbar from '../navbar'; 
+import Navbar from '../navbar';
 import imagesG from './pics/berry.jpeg';
 import imagesU from './pics/chick.jpeg';
 import imagesA from './pics/picture.jpeg';
@@ -44,21 +44,21 @@ const LoginPage = () => {
       <Navbar />
       {!isLoggedIn ? (
         <div className="container login-container">
-      <div className="login-carousel">
-        <Carousel
-        autoPlay
-        infiniteLoop
-        showThumbs={false}
-        showStatus={false}
-        showArrows={false}
-        interval={3000}
-        transitionTime={600}
-      >
-        <img src={imagesG} alt="image1" />
-        <img src={imagesA} alt="image2" />
-        <img src={imagesU} alt="image3" />
-        </Carousel>
-      </div>
+          <div className="login-carousel">
+            <Carousel
+              autoPlay
+              infiniteLoop
+              showThumbs={false}
+              showStatus={false}
+              showArrows={false}
+              interval={3000}
+              transitionTime={600}
+            >
+              <img src={imagesG} alt="image1" />
+              <img src={imagesA} alt="image2" />
+              <img src={imagesU} alt="image3" />
+            </Carousel>
+          </div>
           <div className="form-card login-form">
             <h2>Login</h2>
             {error && <p style={{ color: 'red' }}>{error}</p>}
@@ -90,11 +90,11 @@ const LoginPage = () => {
                   required
                 />
               </div>
-              <button type="submit" className="button login-button">Login</button>
+              <button type="submit" className="button">Login</button>
+              <button className="button register-button" onClick={() => navigate('/register')}>
+                Register here
+              </button>
             </form>
-            <button className="button register-button" onClick={() => navigate('/register')}>
-              Register here
-            </button>
           </div>
         </div>
       ) : null}
