@@ -18,8 +18,8 @@
   display: block;
   margin: 20px auto;
   padding: 10px 20px;
-  background-color: #FF8C00; /* Dark orange */
-  color: #000; /* Black text */
+  background-color: #1a1a1a; /* Dark orange */
+  color: #ffff; /* Black text */
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -27,7 +27,7 @@
 }
 
 .add-meal-button:hover {
-  background-color: #FF4500; /* OrangeRed */
+  background-color: #d45d07; /* OrangeRed */
 }
 
 .meal-cards-container {
@@ -41,7 +41,7 @@
 }
 
 .add-meal-form {
-  background-color: #333; /* Black background */
+  background-color: #ffff; /* Black background */
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
@@ -50,7 +50,8 @@
 }
 
 .add-meal-form label {
-  color: #FF8C00; /* Dark orange labels */
+  color:#a14401; /* Dark orange labels */
+  font-weight: bold;
 }
 
 .add-meal-form input,

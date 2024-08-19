@@ -1,115 +1,117 @@
+/* Adjusting the meal-page and meal-details for positioning */
 .meal-page {
   display: flex;
   align-items: flex-start;
-  justify-content: center;
-  padding: 50px;
-  background: linear-gradient(to bottom, #E86608, #bd5d19, #1d1008d1, #000000);
-  min-height: 100vh;
-  font-family: 'Arial', sans-serif;
-  padding-top: 250px;
+  flex-wrap: wrap; /* Allow cards to wrap to the next line */
+  padding: 40px;
+  background: linear-gradient(to bottom, rgba(244, 121, 45, 0.72), #bd5d19, #1d1008d1, #000000);
+  background-size: cover;
+  min-height: calc(100vh - 80px);
+  font-family: 'Poppins', sans-serif;
+  gap: 10px; /* Space between items */
+  margin-top: 80px;
 }
 
 .meal-image {
-  width: 400px;
-  height: 400px;
+  position: relative;
+  top: 25px;
+  width: 300px; /* Adjusted size */
+  height: 300px; /* Adjusted size */
   object-fit: cover;
   border-radius: 15px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
-  margin-right: 40px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Darker shadow for consistency */
+  margin-right: 20px; /* Adjusted margin */
 }
 
 .meal-details {
-  max-width: 600px;
-  background-color: #fff;
-  padding: 30px;
+  position: relative;
+  top: 25px;
+  max-width: 500px; /* Adjusted size */
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff; /* Consistent background color */
+  padding: 20px; /* Adjusted padding */
   border-radius: 15px;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Darker shadow for consistency */
+  color: #e0e0e0; /* Light text color for readability */
+  margin-bottom: 20px; /* Space between cards */
+  margin-top: 40px; /* Added margin to push the card down */
 }
 
 .meal-details h1 {
-  margin: 0;
-  color: #FF6F00;
-  font-size: 2.8em;
-  margin-bottom: 20px;
-  font-weight: bold;
+  margin-top: 0;
+  color: var(--blaze-primary-color); /* Consistent color */
+  font-size: 2em; /* Adjusted font size */
+  margin-bottom: 15px; /* Adjusted margin */
 }
 
 .meal-details p {
-  margin: 15px 0;
-  font-size: 1.2em;
-  color: #333;
-  line-height: 1.6;
+  margin: 10px 0;
+  font-size: 1em; /* Adjusted font size */
+  line-height: 1.5;
+  color: #1c1c1c;
 }
 
 #name {
   text-decoration: underline;
-  color: #FF6F00;
+  color: var(--blaze-primary-color); /* Consistent color */
 }
 
 #topic {
-  font-size: 1.2em;
+  font-size: 1.1em; /* Adjusted font size */
   font-style: italic;
-  color: #666;
+  color: #CCCCCC; /* Light color for consistency */
 }
 
 #price {
   font-weight: bold;
-  font-size: 1.4em;
-  color: #4CAF50;
+  font-size: 1.2em; /* Adjusted font size */
+  color: #4CAF50; /* Consistent color */
 }
 
 .add-to-cart-button {
-  padding: 12px 24px;
-  background-color: #FF6F00;
+  position: relative;
+  top: 12px;
+  margin-top: auto;
+  padding: 8px 16px; /* Adjusted padding */
+  background-color: #1a1a1a; /* Consistent color */
   color: #fff;
+  text-decoration: none;
   border: none;
-  border-radius: 30px;
+  border-radius: 5px;
   cursor: pointer;
   align-self: flex-start;
-  font-size: 1.1em;
-  font-weight: bold;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  transition: background-color 0.3s ease;
 }
 
 .add-to-cart-button:hover {
-  background-color: #E65100;
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
+  background-color:#000000; /* Hover color for consistency */
 }
 
 .edit-delete-buttons {
-  margin-top: 30px;
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
   display: flex;
-  gap: 20px;
+  gap: 12px; /* Adjusted gap */
 }
 
 .edit-delete-buttons button {
-  padding: 10px 20px;
-  border-radius: 30px;
-  font-size: 1em;
-  font-weight: bold;
+  padding: 5px 8px; /* Adjusted padding */
+  border-radius: 5px;
   cursor: pointer;
-  transition: box-shadow 0.3s ease;
 }
 
 .edit-delete-buttons button.edit {
-  background-color: #ffae00;
+  padding: 5px;
+  background-color: var(--primary-color);
   color: #fff;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-}
-
-.edit-delete-buttons button.edit:hover {
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
 }
 
 .edit-delete-buttons button.delete {
-  background-color: #dc3545;
+  background-color:#e74c3c;
   color: #fff;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-}
-
-.edit-delete-buttons button.delete:hover {
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
 }
 
 .popup {
@@ -118,7 +120,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.8);
+  background: rgba(0, 0, 0, 0.7);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -126,87 +128,91 @@
 }
 
 .popup-content {
-  background: white;
-  padding: 40px;
-  border-radius: 20px;
+  color: #1c1c1c;
+  background: #ffffff; /* Consistent background color */
+  padding: 30px; /* Adjusted padding */
+  border-radius: 15px;
   text-align: center;
-  max-width: 400px;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+  max-width: 350px; /* Adjusted max-width */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 }
 
 .popup-content h2 {
-  color: #FF6F00;
-  margin-bottom: 20px;
-  font-size: 1.8em;
+  color: var(--blaze-primary-color); /* Consistent color */
+  margin-bottom: 15px; /* Adjusted margin */
 }
 
 .popup-content p {
   margin: 10px 0;
-  font-size: 1.2em;
-  color: #333;
+  font-size: 1em; /* Adjusted font size */
 }
 
 .popup-content h3 {
-  margin-top: 20px;
-  color: #4CAF50;
-  font-size: 1.5em;
+  margin-top: 15px; /* Adjusted margin */
+  color: #f46a08; /* Consistent color */
 }
 
 .popup-content button {
-  margin-top: 20px;
-  padding: 12px 24px;
-  background-color: #FF6F00;
+  margin-top: 15px; /* Adjusted margin */
+  padding: 8px 16px; /* Adjusted padding */
+  background-color: var(--blaze-primary-color); /* Consistent color */
   color: white;
   border: none;
-  border-radius: 30px;
+  border-radius: 50px;
   cursor: pointer;
-  font-size: 1.1em;
-  font-weight: bold;
-  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  font-size: 1em;
+  transition: background-color 0.3s ease;
 }
 
 .popup-content button:hover {
-  background-color: #E65100;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  background-color: #d45d07; /* Hover color for consistency */
 }
 
 /* Styles for the edit form */
 form input, form textarea {
-  padding: 12px;
+  background-color: #ffffff;
+  color: #000000;
+  width: 70%;
+  padding: 8px; /* Adjusted padding */
   border: 1px solid #ddd;
-  border-radius: 10px;
-  font-size: 1.1em;
-  margin-bottom: 20px;
-  width: 100%;
+  border-radius: 5px;
+  font-size: 1em;
+  position: relative;
+  left: 600px;
 }
 
 form textarea {
-  min-height: 120px;
+  min-height: 80px; /* Adjusted minimum height */
 }
 
 form button {
-  padding: 12px 24px;
-  border-radius: 30px;
+  padding: 8px 16px; /* Adjusted padding */
+  border: none;
+  border-radius: 50px;
   cursor: pointer;
-  font-size: 1.1em;
+  font-size: 1em;
   transition: background-color 0.3s ease;
-  margin-right: 10px;
 }
 
 form button[type="submit"] {
-  background-color: #4CAF50;
+  position: relative;
+  top: 100px;
+  background-color: #1a1a1a; /* Consistent color */
   color: white;
 }
 
 form button[type="submit"]:hover {
-  background-color: #45a049;
+  background-color: #000000; /* Hover color for consistency */
 }
 
 form button[type="button"] {
-  background-color: #f44336;
+  position: relative;
+  top: 70px;
+
+  background-color:#e87523;
   color: white;
 }
 
 form button[type="button"]:hover {
-  background-color: #d32f2f;
+  background-color: orangered; /* Hover color for consistency */
 }
