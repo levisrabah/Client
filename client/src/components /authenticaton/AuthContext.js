@@ -20,7 +20,7 @@ export const AuthProvider = ({ children }) => {
   // Function to log in user
   const login = async (formData) => {
     try {
-      const response = await fetch('http://127.0.0.1:5555/login', {
+      const response = await fetch('https://blaze-server-1xqz.onrender.com/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

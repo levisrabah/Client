@@ -15,7 +15,7 @@ const CategoryPage = () => {
       navigate('/login');
     } else {
       // If logged in, fetch categories
-      fetch('http://localhost:5555/categories')
+      fetch('https://blaze-server-1xqz.onrender.com/categories')
         .then(response => response.json())
         .then(data => setCategories(data))
         .catch(error => console.error('Error fetching categories:', error));

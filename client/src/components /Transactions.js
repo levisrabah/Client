@@ -17,7 +17,7 @@ const Transaction = () => {
         return;
       }
 
-      const response = await fetch('http://127.0.0.1:5555/transactions', {
+      const response = await fetch('https://blaze-server-1xqz.onrender.com/transactions', {
         headers: {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${token}`

@@ -29,7 +29,7 @@ const DailyOffer = ({ addToBasket }) => {
 
   const fetchOffers = async () => {
     try {
-      const response = await fetch('http://127.0.0.1:5555/offers');
+      const response = await fetch('https://blaze-server-1xqz.onrender.com/offers');
       if (response.ok) {
         const data = await response.json();
         setOffers(data);
@@ -59,7 +59,7 @@ const DailyOffer = ({ addToBasket }) => {
 
   const handleDelete = async (offer) => {
     try {
-      const response = await fetch(`http://127.0.0.1:5555/offers/${offer.id}`, {
+      const response = await fetch(`https://blaze-server-1xqz.onrender.com/offers/${offer.id}`, {
         method: 'DELETE',
         headers: {
           'Authorization': `Bearer ${token}`
@@ -94,7 +94,7 @@ const DailyOffer = ({ addToBasket }) => {
             price: offerForm.price
           }
         };
-        const response = await fetch(`http://127.0.0.1:5555/offers/${editingOffer.id}`, {
+        const response = await fetch(`https://blaze-server-1xqz.onrender.com/offers/${editingOffer.id}`, {
           method: 'PUT',
           headers: {
             'Content-Type': 'application/json',
@@ -113,7 +113,7 @@ const DailyOffer = ({ addToBasket }) => {
           date: offerForm.date,
           meals: [offerForm.mealId]
         };
-        const response = await fetch('http://127.0.0.1:5555/offers', {
+        const response = await fetch('https://blaze-server-1xqz.onrender.com/offers', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

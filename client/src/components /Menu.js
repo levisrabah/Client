@@ -30,7 +30,7 @@ function Menu() {
   // Fetch meals from the server
   const fetchMeals = async () => {
     try {
-      const response = await fetch(`http://localhost:5555/categories/${id}/meals`, {
+      const response = await fetch(`https://blaze-server-1xqz.onrender.com/categories/${id}/meals`, {
         headers: {
           'Authorization': `Bearer ${token}`
         }
@@ -100,7 +100,7 @@ function Menu() {
         ...mealForm,
         category_id: id // Attach the current category ID
       };
-      const response = await fetch('http://localhost:5555/meals', {
+      const response = await fetch('https://blaze-server-1xqz.onrender.com/meals', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

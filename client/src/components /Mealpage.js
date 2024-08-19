@@ -21,7 +21,7 @@ function MealPage({ addToBasket }) {
 
   const fetchMeal = async () => {
     try {
-      const response = await fetch(`http://localhost:5555/meals/${id}`);
+      const response = await fetch(`https://blaze-server-1xqz.onrender.com/meals/${id}`);
       const data = await response.json();
       setMeal(data);
       setMealForm({
@@ -46,7 +46,7 @@ function MealPage({ addToBasket }) {
     e.preventDefault();
     try {
       const token = localStorage.getItem('token'); // Adjust as needed
-      const response = await fetch(`http://localhost:5555/meals/${id}`, {
+      const response = await fetch(`https://blaze-server-1xqz.onrender.com/meals/${id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -69,7 +69,7 @@ function MealPage({ addToBasket }) {
   const handleDelete = async () => {
     try {
       const token = localStorage.getItem('token'); // Adjust as needed
-      const response = await fetch(`http://localhost:5555/meals/${id}`, {
+      const response = await fetch(`https://blaze-server-1xqz.onrender.com/meals/${id}`, {
         method: 'DELETE',
         headers: {
           'Authorization': `Bearer ${token}` // Add this if you use JWT or similar
