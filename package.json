@@ -3,6 +3,7 @@
     "@fortawesome/fontawesome-free": "^6.6.0",
     "axios": "^1.7.3",
     "bootstrap": "^5.3.3",
+    "react-responsive-carousel": "^3.2.23",
     "react-router-dom": "^6.25.1",
     "switch": "^0.0.0"
   }
