@@ -26,7 +26,8 @@
 .meal-details {
   position: relative;
   top: 25px;
-  max-width: 500px; /* Adjusted size */
+  max-width: 1000px; /* Adjusted size */
+  width: 30%;
   position: relative;
   display: flex;
   flex-direction: column;
