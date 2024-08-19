@@ -4,7 +4,7 @@
   align-items: flex-start;
   flex-wrap: wrap; /* Allow cards to wrap to the next line */
   padding: 40px;
-  background: linear-gradient(to bottom, rgba(244, 121, 45, 0.72), #bd5d19, #1d1008d1, #000000);
+  background: linear-gradient(to bottom, #ed7f31, #BD5D19, #1A1A1A);
   background-size: cover;
   min-height: calc(100vh - 80px);
   font-family: 'Poppins', sans-serif;

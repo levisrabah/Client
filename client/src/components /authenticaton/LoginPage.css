@@ -28,7 +28,7 @@
   flex-direction: column;
   justify-content: center;
   padding: 40px;
-  background-color: #1a1a1a;
+  background-color:#ffffff;
   border-radius: 15px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   margin: 0 20px;
@@ -40,7 +40,7 @@
   font-family: 'Mohave', sans-serif;
   font-weight: 600;
   font-size: 24px;
-  color: #ffffff;
+  color: #e78b11;
 }
 
 .container .input-group {
@@ -85,7 +85,7 @@
 
 /* Specific styles for login page */
 .login-container {
-  background: linear-gradient(to bottom, #eaeae9, #eaeae9, #e67b39d1, #ee612d);
+  background: linear-gradient(to bottom, #ed7f31, #BD5D19, #1A1A1A);
 }
 
 .login-container .login-image {
@@ -128,7 +128,7 @@
 }
 
 .register-button {
-  background-color: #e78b11;
+  background-color: #e74c3c;
   color: white;
 }
 

@@ -3,7 +3,7 @@ body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
-  background: linear-gradient(to bottom, #BD5D19, #1A1A1A);
+  background: linear-gradient(to bottom, #ed7f31, #BD5D19, #1A1A1A);
 } 
 .container {
   max-width: 1200px;
@@ -19,7 +19,7 @@ body {
 
 .basket-heading {
   font-size: 2em;
-  color: #f57c00;
+  color: #ffffff;
 }
 
 .divider {
@@ -101,7 +101,7 @@ body {
 
 .order-summary h3 {
   margin-top: 0;
-  color: #f57c00;
+  color: #ffffff;
 }
 
 .order-summary p {
