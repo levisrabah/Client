@@ -1,3 +1,68 @@
+.meal-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  min-height: 100vh; /* Ensure full-page height */
+}
+
+.meal-page form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 300px; /* Adjust width as needed */
+  padding: 20px;
+  background-color: #f9f9f9;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
+
+.meal-page form input,
+.meal-page form textarea {
+  width: 100%;
+  margin: 10px 0;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+}
+
+.meal-page form button,
+.add-to-cart-button,
+.edit-delete-buttons button {
+  width: 100%;
+  margin: 10px 0;
+  padding: 10px;
+  background-color: #e86608;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.meal-page form button:hover,
+.add-to-cart-button:hover,
+.edit-delete-buttons button:hover {
+  background-color: #cc5a07;
+}
+
+/* Centering the image and meal details */
+.meal-image {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 20px;
+}
+
+.meal-details {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Change font color to white for name, description, and price */
+.meal-details h1,
+.meal-details p {
+  color: white;
+}
+
 /* Popup container styles */
 .popup {
   position: fixed;
@@ -5,52 +70,15 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.7);
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 1000;
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
-/* Popup content styles */
 .popup-content {
-  background: #ffffff;
-  padding: 20px; /* Adjust padding as needed */
-  border-radius: 15px;
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
   text-align: center;
-  max-width: 400px; /* Adjust max-width as needed */
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-  width: 90%; /* Ensure the popup content takes most of the width */
-  margin: 0 auto; /* Center the content horizontally */
-}
-
-.popup-content h2 {
-  color: var(--blaze-primary-color);
-  margin-bottom: 15px;
-}
-
-.popup-content p {
-  margin: 10px 0;
-  font-size: 1em;
-}
-
-.popup-content h3 {
-  margin-top: 15px;
-  color: #f46a08;
-}
-
-.popup-content button {
-  margin-top: 15px;
-  padding: 8px 16px;
-  background-color: var(--blaze-primary-color);
-  color: white;
-  border: none;
-  border-radius: 50px;
-  cursor: pointer;
-  font-size: 1em;
-  transition: background-color 0.3s ease;
-}
-
-.popup-content button:hover {
-  background-color: #d45d07;
 }
