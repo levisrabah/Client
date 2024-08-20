@@ -7,6 +7,7 @@
   align-items: center;
   justify-content: center;
 }
+
 .login-carousel {
   flex: 1;
   display: flex;
@@ -28,7 +29,7 @@
   flex-direction: column;
   justify-content: center;
   padding: 40px;
-  background-color:#ffffff;
+  background-color: #ffffff;
   border-radius: 15px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   margin: 0 20px;
@@ -48,12 +49,20 @@
 }
 
 .container input,
-.container select {
+.container select,
+.container textarea { /* Add textarea styling */
   width: 100%;
   padding: 10px;
   border-radius: 4px;
   font-size: 16px;
   font-family: 'Mohave', sans-serif;
+  border: 1px solid #ddd; /* Light border for inputs */
+}
+
+.container textarea {
+  resize: vertical; /* Allow vertical resizing only */
+  min-height: 100px; /* Set a minimum height */
+  max-height: 200px; /* Set a maximum height */
 }
 
 .container .button {

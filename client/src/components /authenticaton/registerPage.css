@@ -50,10 +50,23 @@ h2 {
   font-weight: bold;
 }
 
-input {
+input,
+textarea {
   width: 100%;
   padding: 10px;
   border-radius: 4px;
+  border: 1px solid #ddd; /* Light border for inputs */
+  font-size: 16px;
+  font-family: 'Mohave', sans-serif;
+  position: relative;
+  right: 800px;
+}
+
+textarea {
+  resize: vertical; /* Allow vertical resizing only */
+  min-height: 100px; /* Set a minimum height */
+  max-height: 200px; /* Set a maximum height */
+  margin-bottom: 15px; /* Space below textarea */
 }
 
 select {
@@ -95,6 +108,7 @@ select {
     position: static; /* Reset positioning for smaller screens */
   }
 }
+
 .auth-links {
   margin-top: 20px;
   text-align: center;
